@@ -9,709 +9,727 @@
 :root{
   --bg:#0a1628;--bg2:#0f1e35;--bg3:#162540;
   --accent:#4cc9f0;--accent2:#06d6a0;--warn:#ffd166;--danger:#ef476f;
-  --text:#e8f4f8;--muted:#7a9ab0;--border:rgba(76,201,240,0.12);
-  --card:rgba(15,30,53,0.9);--font:'Segoe UI',system-ui,sans-serif;
+  --text:#e8f4f8;--muted:#7a9ab0;--border:rgba(76,201,240,0.15);
+  --card:rgba(15,30,53,0.95);--font:'Segoe UI',system-ui,sans-serif;
 }
 body{background:var(--bg);font-family:var(--font);color:var(--text);min-height:100vh;overflow:hidden;}
-.screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;}
+.screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
 .hidden{display:none!important;}
 
+/* starfield */
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+
 /* ── LOGIN ── */
-#s-login{background:var(--bg);flex-direction:column;align-items:center;}
+#s-login{background:transparent;flex-direction:column;align-items:center;z-index:2;}
 .login-brand{text-align:center;margin-bottom:28px;}
 .login-badge{font-size:10px;letter-spacing:4px;color:var(--accent);opacity:.7;text-transform:uppercase;margin-bottom:8px;}
-.login-title{font-size:34px;font-weight:800;color:#fff;letter-spacing:-1px;}
-.login-sub{font-size:12px;color:var(--muted);letter-spacing:2px;margin-top:4px;}
-.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 32px;width:360px;display:flex;flex-direction:column;gap:14px;}
-.login-tabs{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:4px;}
-.ltab{flex:1;padding:9px 0;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--muted);background:transparent;border:none;transition:all .2s;}
+.login-title{font-size:36px;font-weight:800;color:#fff;letter-spacing:-1px;}
+.login-sub{font-size:11px;color:var(--muted);letter-spacing:3px;margin-top:4px;text-transform:uppercase;}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px 32px;width:370px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(8px);}
+.login-tabs{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.ltab{flex:1;padding:9px 0;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--muted);background:transparent;border:none;transition:all .2s;font-family:var(--font);}
 .ltab.active{background:var(--accent);color:#0a1628;font-weight:700;}
-.login-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.login-input{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;outline:none;transition:border .2s;}
+.login-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.login-input{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:14px;outline:none;transition:border .2s;font-family:var(--font);}
 .login-input:focus{border-color:var(--accent);}
 .login-err{font-size:12px;color:var(--danger);text-align:center;min-height:16px;}
-.btn-primary{width:100%;padding:12px;background:var(--accent2);border:none;border-radius:6px;color:#0a1628;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
-.btn-primary:hover{filter:brightness(1.12);transform:scale(1.02);}
-.lang-row{display:flex;gap:8px;}
-.lang-btn{flex:1;padding:9px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:1px;cursor:pointer;text-align:center;transition:all .2s;}
-.lang-btn.sel{background:rgba(76,201,240,0.15);border-color:var(--accent);color:var(--accent);}
-.login-note{font-size:11px;color:var(--muted);text-align:center;opacity:.6;}
+.btn-primary{width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),#0096c7);border:none;border-radius:8px;color:#0a1628;font-weight:700;font-size:14px;letter-spacing:1px;cursor:pointer;transition:opacity .2s;font-family:var(--font);}
+.btn-primary:hover{opacity:.85;}
 
-/* ── ADMIN DASHBOARD ── */
-#s-admin{background:var(--bg);flex-direction:column;padding:32px;overflow-y:auto;align-items:flex-start;justify-content:flex-start;}
-.adm-header{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:700px;margin:0 auto 24px;}
-.adm-title{font-size:22px;font-weight:700;}
-.adm-badge{font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;}
-.btn-sm{padding:7px 18px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
-.btn-sm:hover{border-color:var(--accent);color:var(--accent);}
-.lb-table{width:100%;max-width:700px;margin:0 auto;border-collapse:collapse;}
-.lb-table th{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
-.lb-table td{padding:12px;border-bottom:1px solid rgba(76,201,240,0.06);font-size:14px;}
-.lb-rank{font-weight:800;color:var(--muted);font-size:13px;}
-.lb-rank.r1{color:#ffd700;}
-.lb-rank.r2{color:#c0c0c0;}
-.lb-rank.r3{color:#cd7f32;}
-.lb-score{font-weight:700;}
-.sc-ok{color:var(--accent2);}
-.sc-cond{color:var(--warn);}
-.sc-no{color:var(--danger);}
-.lb-verdict{font-size:11px;letter-spacing:1px;}
-.lb-empty{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
-.lb-bar{height:4px;background:rgba(76,201,240,0.1);border-radius:2px;margin-top:4px;overflow:hidden;}
-.lb-bar-fill{height:100%;border-radius:2px;transition:width 1s ease;}
+/* ── ADMIN ── */
+#s-admin{background:var(--bg);flex-direction:column;align-items:center;padding:32px;z-index:2;overflow-y:auto;}
+.adm-header{text-align:center;margin-bottom:24px;}
+.adm-title{font-size:22px;font-weight:800;color:var(--accent);}
+.adm-sub{font-size:12px;color:var(--muted);margin-top:4px;}
+.lb-table{width:100%;max-width:560px;border-collapse:collapse;}
+.lb-table th{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--border);text-align:left;}
+.lb-table td{padding:10px 12px;font-size:14px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.lb-rank{color:var(--warn);font-weight:700;width:40px;}
+.lb-score{color:var(--accent2);font-weight:700;}
+.lb-grade{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;}
+.grade-S{background:rgba(6,214,160,0.15);color:var(--accent2);}
+.grade-A{background:rgba(76,201,240,0.15);color:var(--accent);}
+.grade-B{background:rgba(255,209,102,0.15);color:var(--warn);}
+.grade-C{background:rgba(239,71,111,0.15);color:var(--danger);}
+.btn-ghost{padding:10px 22px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:13px;transition:all .2s;font-family:var(--font);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.adm-actions{display:flex;gap:12px;margin-top:20px;}
+.lb-empty{color:var(--muted);font-size:13px;padding:24px;text-align:center;}
 
 /* ── GAME ── */
-#s-game{background:var(--bg);flex-direction:column;padding:0;overflow:hidden;align-items:stretch;justify-content:flex-start;}
-#g-hud{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(5,12,24,.97);border-bottom:1px solid var(--border);flex-shrink:0;font-size:12px;}
-#g-hud-score{color:var(--accent);letter-spacing:2px;font-weight:700;}
-#g-hud-area{color:var(--muted);letter-spacing:1px;font-size:11px;}
-.g-dots{display:flex;gap:5px;}
-.g-dot{width:7px;height:7px;border-radius:50%;background:rgba(76,201,240,.1);transition:background .3s;}
-.g-dot.done{background:var(--accent2);}
-.g-dot.active{background:var(--accent);}
-#g-lang-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:3px 10px;border-radius:12px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:all .2s;}
-#g-lang-btn:hover{border-color:var(--accent);color:var(--accent);}
-#g-scene{flex:1;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;}
-.g-bg{position:absolute;inset:0;transition:background .6s;}
-.bg-brief{background:#0d1b2a;} .bg-office{background:#1a1208;}
-.bg-docs{background:#0e1a2e;} .bg-pharm{background:#071a26;}
-.bg-isf{background:#1a1610;} .bg-lab{background:#081a12;}
-.bg-emr{background:#0a1020;} .bg-coi{background:#1a0e18;}
-.bg-report{background:#0a1628;}
-.g-room-canvas{position:absolute;inset:0;pointer-events:none;opacity:.3;}
-#g-char{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:160px;height:240px;transition:opacity .4s;}
-#g-dialog{background:rgba(8,18,34,.97);border-top:1px solid var(--border);padding:14px 18px 38px;flex-shrink:0;min-height:128px;position:relative;cursor:pointer;}
-.g-speaker{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
-.sp-narrator{color:var(--muted);font-style:italic;}
-.sp-you{color:var(--accent2);}
-.sp-pi{color:var(--warn);}
-.sp-manager,.sp-lsm{color:#4cc9f0;}
-.sp-pharmacist{color:#a8e6cf;}
-.sp-coordinator{color:#ffc8dd;}
-.sp-labtech{color:#c3b1e1;}
-.sp-pi2{color:#ffa07a;}
-.g-dtext{font-size:15px;line-height:1.65;color:var(--text);min-height:46px;}
-#g-cont{position:absolute;bottom:10px;right:16px;background:none;border:none;color:rgba(76,201,240,.45);font-size:12px;cursor:pointer;animation:sqvblink 1.5s infinite;padding:0;}
-@keyframes sqvblink{0%,100%{opacity:1;}50%{opacity:.15;}}
-.typing-cursor::after{content:'▋';animation:sqvblink 0.7s infinite;color:var(--accent);font-size:13px;}
-#g-choices{display:none;flex-direction:column;gap:8px;padding:12px 16px;background:rgba(8,18,34,.97);border-top:1px solid var(--border);flex-shrink:0;}
-.g-cprompt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warn);margin-bottom:4px;}
-.g-cbtn{background:rgba(30,45,64,.8);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:6px;cursor:pointer;font-size:13px;text-align:left;transition:all .2s;line-height:1.4;}
-.g-cbtn:hover{background:rgba(76,201,240,.1);border-color:var(--accent);transform:translateX(3px);}
-#g-conseq{display:none;flex-direction:column;padding:12px 16px;background:rgba(8,18,34,.97);border-top:1px solid var(--border);flex-shrink:0;}
-.g-ctext{font-size:13px;line-height:1.6;padding:10px 13px;border-radius:6px;margin-bottom:10px;}
-.cok{background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.3);color:#a8f0d8;}
-.cbad{background:rgba(239,71,111,.1);border:1px solid rgba(239,71,111,.3);color:#f5a8bc;}
-.cpart{background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.3);color:#ffe8a0;}
-#g-nxtbtn{align-self:flex-start;padding:8px 22px;background:var(--accent);border:none;border-radius:4px;color:#0a1628;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s;}
-#g-nxtbtn:hover{background:#7dd8f8;}
+#s-game{background:transparent;flex-direction:column;z-index:2;width:100%;height:100%;overflow:hidden;}
+#g-hud{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(10,22,40,0.9);border-bottom:1px solid var(--border);backdrop-filter:blur(6px);flex-shrink:0;}
+.hud-left{display:flex;align-items:center;gap:16px;}
+.hud-logo{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:2px;}
+.hud-scene{font-size:11px;color:var(--muted);}
+.hud-right{display:flex;align-items:center;gap:20px;}
+.hud-score{font-size:20px;font-weight:800;color:var(--accent2);}
+.hud-pts-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.prog-bar{width:120px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s ease;border-radius:2px;}
 
-/* ── FINAL ── */
-#g-final{display:none;position:absolute;inset:0;background:var(--bg);overflow-y:auto;padding:24px;z-index:15;}
-.f-verdict{font-size:26px;font-weight:800;margin-bottom:4px;}
-.vok{color:var(--accent2);}
-.vcond{color:var(--warn);}
-.vno{color:var(--danger);}
-.f-score{font-size:14px;color:var(--muted);margin-bottom:6px;}
-.f-bar{width:100%;height:6px;background:rgba(30,45,64,.8);border-radius:3px;margin:12px 0;overflow:hidden;}
-.f-bar-fill{height:100%;border-radius:3px;transition:width 1.2s ease;}
-.f-note{font-size:12px;color:var(--muted);line-height:1.6;max-width:460px;margin-bottom:18px;}
-.f-dtitle{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;text-align:center;}
-.f-ditem{background:rgba(30,45,64,.5);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;display:grid;grid-template-columns:28px 1fr;gap:10px;}
-.f-dicon{font-size:18px;padding-top:2px;}
-.f-darea{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
-.f-dchoice{font-size:12px;color:var(--text);margin-bottom:4px;font-style:italic;}
-.f-dexp{font-size:11px;line-height:1.5;color:var(--muted);}
-.f-dpts{font-size:11px;font-weight:700;margin-top:4px;}
-.pts-ok{color:var(--accent2);}
-.pts-no{color:var(--danger);}
-.pts-p{color:var(--warn);}
-.f-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
-.btn-ghost{padding:9px 24px;background:rgba(30,45,64,.8);border:1px solid var(--border);color:var(--text);border-radius:6px;cursor:pointer;font-size:12px;letter-spacing:1.5px;transition:all .2s;}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+/* main game area */
+#g-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;overflow:hidden;}
+#g-scene{width:100%;max-width:720px;display:flex;flex-direction:column;gap:0;}
+
+/* dialog box */
+#g-dialog{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;transition:border-color .2s;margin-bottom:0;}
+#g-dialog:hover{border-color:rgba(76,201,240,0.35);}
+.dlg-speaker-bar{padding:10px 20px 8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.dlg-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.av-cra{background:linear-gradient(135deg,#1a3a5c,#2e6b9e);}
+.av-pi{background:linear-gradient(135deg,#1a3a2c,#2e7a4e);}
+.av-coord{background:linear-gradient(135deg,#3a2c1a,#7a5a2e);}
+.av-lab{background:linear-gradient(135deg,#2c1a3a,#5a2e7a);}
+.av-narrator{background:linear-gradient(135deg,#1a1a2e,#2e2e5a);}
+.av-pm{background:linear-gradient(135deg,#3a1a1a,#7a2e2e);}
+.dlg-speaker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);}
+.dlg-body{padding:16px 20px 18px;}
+.dlg-text{font-size:15px;line-height:1.65;color:var(--text);}
+.dlg-hint{font-size:11px;color:var(--muted);margin-top:10px;opacity:.7;}
+
+/* choices */
+#g-choices{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.choice-btn{padding:13px 18px;background:rgba(15,30,53,0.8);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;text-align:left;cursor:pointer;transition:all .2s;line-height:1.45;font-family:var(--font);}
+.choice-btn:hover{background:rgba(76,201,240,0.08);border-color:rgba(76,201,240,0.4);transform:translateX(3px);}
+.choice-btn.correct{background:rgba(6,214,160,0.12);border-color:var(--accent2);color:var(--accent2);}
+.choice-btn.wrong{background:rgba(239,71,111,0.1);border-color:var(--danger);color:var(--danger);}
+.choice-btn:disabled{cursor:default;transform:none;}
+
+/* feedback overlay */
+#g-feedback{display:none;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-top:12px;}
+.fb-result{font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+.fb-correct .fb-result{color:var(--accent2);}
+.fb-wrong .fb-result{color:var(--danger);}
+.fb-explanation{font-size:14px;line-height:1.6;color:var(--text);}
+.fb-pts{font-size:12px;color:var(--warn);margin-top:8px;}
+.btn-next{margin-top:12px;padding:10px 24px;background:linear-gradient(135deg,var(--accent),#0096c7);border:none;border-radius:8px;color:#0a1628;font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font);}
+
+/* final screen */
+#g-final{display:none;width:100%;max-width:640px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center;overflow-y:auto;max-height:90vh;}
+.f-grade{font-size:64px;font-weight:900;line-height:1;}
+.f-grade-S{color:var(--accent2);}
+.f-grade-A{color:var(--accent);}
+.f-grade-B{color:var(--warn);}
+.f-grade-C{color:var(--danger);}
+.f-title{font-size:20px;font-weight:700;margin-top:8px;}
+.f-score{font-size:42px;font-weight:900;color:var(--accent2);margin:8px 0 4px;}
+.f-sub{font-size:13px;color:var(--muted);}
+.f-bar-wrap{background:rgba(255,255,255,0.06);border-radius:4px;height:8px;margin:16px 0;overflow:hidden;}
+.f-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width 1s ease;width:0;}
+.f-breakdown{display:flex;flex-direction:column;gap:6px;margin:16px 0;text-align:left;}
+.f-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:7px;font-size:13px;}
+.f-row-label{color:var(--muted);flex:1;}
+.f-row-pts{color:var(--accent2);font-weight:700;font-size:13px;}
+.f-row-result{font-size:13px;margin-right:8px;}
+.f-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;}
+
+/* checklist scene */
+#g-checklist{display:none;flex-direction:column;gap:8px;margin-top:12px;}
+.chk-item{display:flex;align-items:center;gap:12px;padding:11px 16px;background:rgba(15,30,53,0.8);border:1px solid var(--border);border-radius:9px;cursor:pointer;transition:all .2s;font-size:14px;}
+.chk-item:hover{border-color:rgba(76,201,240,0.3);}
+.chk-item.checked{background:rgba(6,214,160,0.08);border-color:var(--accent2);}
+.chk-box{width:20px;height:20px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.chk-item.checked .chk-box{background:var(--accent2);border-color:var(--accent2);color:#0a1628;font-size:13px;}
+.chk-submit{margin-top:10px;padding:11px 24px;background:linear-gradient(135deg,var(--accent),#0096c7);border:none;border-radius:8px;color:#0a1628;font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font);align-self:flex-start;}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fade-in{animation:fadeIn .3s ease forwards;}
 </style>
 </head>
 <body>
 
-<!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
+<canvas id="stars"></canvas>
+
+<!-- LOGIN -->
 <div id="s-login" class="screen">
   <div class="login-brand">
-    <div class="login-badge">Clinical Trial Simulation</div>
+    <div class="login-badge">Syneos Health · Training Sim</div>
     <div class="login-title">SQV Chronicles</div>
-    <div class="login-sub">The Qualification Visit · EFC18122022</div>
+    <div class="login-sub">The Qualification Visit</div>
   </div>
   <div class="login-box">
     <div class="login-tabs">
-      <button class="ltab active" onclick="L.tab('player')">Jugador / Player</button>
-      <button class="ltab" onclick="L.tab('admin')">Admin</button>
+      <button class="ltab active" id="lt-player" onclick="L.tab('player')">Jugador</button>
+      <button class="ltab" id="lt-admin" onclick="L.tab('admin')">Admin</button>
     </div>
-
-    <div id="l-player-section">
-      <div class="login-label" id="l-name-label">Tu nombre / Your name</div>
-      <input class="login-input" id="l-name" type="text" placeholder="Ej: María González" maxlength="32"/>
-      <div class="login-label" id="l-lang-label">Idioma / Language</div>
-      <div class="lang-row">
-        <button class="lang-btn sel" id="lb-es" onclick="L.lang('es')">🇦🇷 Español</button>
-        <button class="lang-btn" id="lb-en" onclick="L.lang('en')">🇺🇸 English</button>
-      </div>
-      <button class="btn-primary" id="l-start-btn" onclick="L.startPlayer()">▶ COMENZAR MISIÓN</button>
-      <div class="login-note" id="l-note">Ingresá tu nombre para guardar tu puntaje</div>
+    <div id="lp-player">
+      <div class="login-label">Tu nombre</div>
+      <input class="login-input" id="l-name" placeholder="Ej: Maria Garcia" maxlength="30"/>
     </div>
-
-    <div id="l-admin-section" class="hidden">
-      <div class="login-label">Usuario</div>
-      <input class="login-input" id="l-adm-user" type="text" placeholder="admin"/>
+    <div id="lp-admin" class="hidden">
       <div class="login-label">Contraseña</div>
-      <input class="login-input" id="l-adm-pass" type="password" placeholder="••••"/>
-      <div class="login-err" id="l-err"></div>
-      <button class="btn-primary" onclick="L.loginAdmin()">INGRESAR</button>
+      <input class="login-input" id="l-adm-pass" type="password" placeholder="••••••"/>
     </div>
+    <div class="login-err" id="l-err"></div>
+    <button class="btn-primary" onclick="L.submit()">INGRESAR</button>
   </div>
 </div>
 
-<!-- ═══════════════ ADMIN DASHBOARD ═══════════════ -->
+<!-- ADMIN -->
 <div id="s-admin" class="screen hidden">
   <div class="adm-header">
-    <div>
-      <div class="adm-badge">Panel de Administrador</div>
-      <div class="adm-title">🏆 Leaderboard — EFC18122022 SQV</div>
-    </div>
-    <div style="display:flex;gap:8px">
-      <button class="btn-sm" onclick="A.refresh()">↻ Actualizar</button>
-      <button class="btn-sm" onclick="A.clear()">🗑 Limpiar</button>
-      <button class="btn-sm" onclick="A.logout()">← Salir</button>
-    </div>
+    <div class="adm-title">⚡ Leaderboard — EFC18122022</div>
+    <div class="adm-sub">Top scores del equipo</div>
   </div>
-  <table class="lb-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nombre / Name</th>
-        <th>Puntaje / Score</th>
-        <th>Veredicto / Verdict</th>
-        <th>Fecha / Date</th>
-      </tr>
-    </thead>
-    <tbody id="lb-body">
-      <tr><td colspan="5" class="lb-empty">Cargando...</td></tr>
-    </tbody>
-  </table>
+  <table class="lb-table" id="lb-table"></table>
+  <div class="adm-actions">
+    <button class="btn-ghost" onclick="show('s-login')">← Volver</button>
+    <button class="btn-ghost" onclick="L.clearScores()">🗑 Limpiar</button>
+  </div>
 </div>
 
-<!-- ═══════════════ GAME SCREEN ═══════════════ -->
+<!-- GAME -->
 <div id="s-game" class="screen hidden">
   <div id="g-hud">
-    <div id="g-hud-score">SCORE: 0 / 100</div>
-    <div class="g-dots" id="g-dots"></div>
-    <div id="g-hud-area"></div>
-    <button id="g-lang-btn" onclick="G.toggleLang()">EN</button>
-  </div>
-  <div id="g-scene">
-    <div class="g-bg bg-brief" id="g-bg">
-      <canvas class="g-room-canvas" id="g-deco"></canvas>
+    <div class="hud-left">
+      <div class="hud-logo">SQV</div>
+      <div class="hud-scene" id="h-scene">Escena 1 / 11</div>
+      <div class="prog-bar"><div class="prog-fill" id="h-prog" style="width:0%"></div></div>
     </div>
-    <div id="g-char"></div>
+    <div class="hud-right">
+      <div>
+        <div class="hud-pts-label">Score</div>
+        <div class="hud-score" id="h-score">0</div>
+      </div>
+    </div>
+  </div>
+  <div id="g-main">
+    <div id="g-scene">
+      <div id="g-dialog">
+        <div class="dlg-speaker-bar">
+          <div class="dlg-avatar av-narrator" id="d-avatar">🎙</div>
+          <div class="dlg-speaker" id="d-speaker">NARRADOR</div>
+        </div>
+        <div class="dlg-body">
+          <div class="dlg-text" id="d-text"></div>
+          <div class="dlg-hint" id="d-hint">Haz clic para continuar ▶</div>
+        </div>
+      </div>
+      <div id="g-choices"></div>
+      <div id="g-checklist"></div>
+      <div id="g-feedback"></div>
+    </div>
     <div id="g-final"></div>
-  </div>
-  <div id="g-dialog">
-    <div class="g-speaker" id="g-spk"></div>
-    <div class="g-dtext" id="g-dtxt"></div>
-    <button id="g-cont">▶ Continuar</button>
-  </div>
-  <div id="g-choices">
-    <div class="g-cprompt" id="g-cpr"></div>
-    <div id="g-cbtns"></div>
-  </div>
-  <div id="g-conseq">
-    <div class="g-ctext" id="g-ctxt"></div>
-    <button id="g-nxtbtn" onclick="G.nextScene()"></button>
   </div>
 </div>
 
 <script>
-// ─── STORAGE ─────────────────────────────────────────────────
-const LS_KEY='sqv-leaderboard-v2';
-function lbLoad(){try{const d=localStorage.getItem(LS_KEY);return d?JSON.parse(d):[]}catch{return[]}}
-function lbSave(data){try{localStorage.setItem(LS_KEY,JSON.stringify(data))}catch{}}
-function lbAdd(name,score,lang){
-  const lb=lbLoad();
-  lb.push({name,score,lang,date:new Date().toLocaleDateString('es-AR')});
-  lb.sort((a,b)=>b.score-a.score);
-  lbSave(lb.slice(0,50));
-}
-
-// ─── TRANSLATIONS ─────────────────────────────────────────────
-const I={
-  es:{
-    continue:'▶ Continuar',nextArea:'▶ Siguiente área',seeResults:'▶ Ver resultados',
-    verdictOk:'✅ SITE CALIFICADO — APROBADO',
-    verdictCond:'⚠️ CALIFICACIÓN CONDICIONAL',
-    verdictNo:'❌ SITE NO CALIFICADO',
-    noteOk:'Excelente trabajo. Tu evaluación fue rigurosa, siguió los procesos ICH-GCP E6(R3) y protegió la integridad del estudio EFC18122022.',
-    noteCond:'El site puede calificarse una vez resueltas las acciones correctivas identificadas en el informe SQV.',
-    noteNo:'Se detectaron múltiples deficiencias críticas. El site no cumple los requisitos mínimos según el proceso SQV.',
-    totalScore:'Puntaje total',decisionSummary:'RESUMEN DE DECISIONES',
-    playAgain:'↺ JUGAR DE NUEVO',goLb:'🏆 Ver puntajes',
-    verdictShortOk:'Aprobado',verdictShortCond:'Condicional',verdictShortNo:'No calificado'
-  },
-  en:{
-    continue:'▶ Continue',nextArea:'▶ Next area',seeResults:'▶ See results',
-    verdictOk:'✅ SITE QUALIFIED — APPROVED',
-    verdictCond:'⚠️ CONDITIONAL QUALIFICATION',
-    verdictNo:'❌ SITE NOT QUALIFIED',
-    noteOk:'Excellent work. Your evaluation was rigorous, followed ICH-GCP E6(R3) processes and protected study EFC18122022 integrity.',
-    noteCond:'The site may qualify once the corrective actions identified in the SQV report are resolved.',
-    noteNo:'Multiple critical deficiencies detected. The site does not meet minimum requirements per the SQV process.',
-    totalScore:'Total score',decisionSummary:'DECISION SUMMARY',
-    playAgain:'↺ PLAY AGAIN',goLb:'🏆 See scores',
-    verdictShortOk:'Approved',verdictShortCond:'Conditional',verdictShortNo:'Not qualified'
+// ─── STARS ────────────────────────────────────────────────────
+(function(){
+  const c=document.getElementById('stars'),ctx=c.getContext('2d');
+  function resize(){c.width=innerWidth;c.height=innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  const stars=Array.from({length:140},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.2+.2,a:Math.random()}));
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,230,255,${s.a})`;ctx.fill();});
   }
-};
+  draw();
+})();
 
-// ─── CHARACTERS ───────────────────────────────────────────────
-const CHARS={
-manager:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="130" width="100" height="110" rx="6" fill="#1a3a5c"/><rect x="50" y="130" width="60" height="110" rx="4" fill="#1e4a6e"/><polygon points="80,136 74,168 80,178 86,168" fill="#4cc9f0"/><rect x="68" y="128" width="12" height="18" fill="white" opacity="0.9"/><ellipse cx="80" cy="100" rx="30" ry="34" fill="#c8a882"/><ellipse cx="80" cy="72" rx="30" ry="18" fill="#4a3520"/><ellipse cx="70" cy="98" rx="4" ry="4" fill="white"/><ellipse cx="90" cy="98" rx="4" ry="4" fill="white"/><circle cx="70" cy="98" r="2.5" fill="#2a1a0a"/><circle cx="90" cy="98" r="2.5" fill="#2a1a0a"/><rect x="64" y="93" width="11" height="8" rx="2" fill="none" stroke="#4cc9f0" stroke-width="1.5"/><rect x="85" y="93" width="11" height="8" rx="2" fill="none" stroke="#4cc9f0" stroke-width="1.5"/><line x1="75" y1="97" x2="85" y2="97" stroke="#4cc9f0" stroke-width="1.5"/><ellipse cx="80" cy="108" rx="3" ry="2.5" fill="#b89070"/><path d="M72 120 Q80 126 88 120" stroke="#7a5a3a" stroke-width="1.5" fill="none"/><rect x="5" y="134" width="26" height="58" rx="10" fill="#1a3a5c"/><rect x="129" y="134" width="26" height="58" rx="10" fill="#1a3a5c"/><rect x="122" y="162" width="32" height="40" rx="3" fill="#e8e0d0"/><rect x="125" y="154" width="26" height="6" rx="2" fill="#888"/></svg>`,
-pi:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="22" y="126" width="116" height="114" rx="6" fill="#f0f4f8"/><rect x="44" y="126" width="72" height="114" rx="4" fill="#e8eef4"/><path d="M55 145 Q55 165 66 170 Q78 175 82 165" stroke="#2a4a6a" stroke-width="2.5" fill="none"/><circle cx="82" cy="163" r="6" fill="none" stroke="#2a4a6a" stroke-width="2"/><rect x="54" y="155" width="22" height="16" rx="2" fill="#4cc9f0" opacity="0.3"/><ellipse cx="80" cy="98" rx="32" ry="36" fill="#d4956a"/><ellipse cx="80" cy="68" rx="32" ry="20" fill="#5a5560"/><ellipse cx="52" cy="86" rx="10" ry="14" fill="#5a5560"/><ellipse cx="108" cy="86" rx="10" ry="14" fill="#5a5560"/><ellipse cx="70" cy="96" rx="4.5" ry="4.5" fill="white"/><ellipse cx="90" cy="96" rx="4.5" ry="4.5" fill="white"/><circle cx="70" cy="96" r="3" fill="#2a3a2a"/><circle cx="90" cy="96" r="3" fill="#2a3a2a"/><ellipse cx="80" cy="107" rx="3.5" ry="3" fill="#c07850"/><path d="M70 118 Q80 124 90 118" stroke="#8a5030" stroke-width="1.5" fill="none"/><rect x="0" y="130" width="24" height="66" rx="10" fill="#f0f4f8"/><rect x="136" y="130" width="24" height="66" rx="10" fill="#f0f4f8"/></svg>`,
-pharmacist:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="128" width="108" height="112" rx="6" fill="#f0f4f8"/><rect x="46" y="128" width="68" height="112" rx="4" fill="#e8eef4"/><rect x="68" y="143" width="24" height="8" rx="2" fill="#06d6a0" opacity="0.7"/><rect x="76" y="135" width="8" height="24" rx="2" fill="#06d6a0" opacity="0.7"/><ellipse cx="80" cy="98" rx="30" ry="34" fill="#f0d0a0"/><ellipse cx="80" cy="70" rx="30" ry="18" fill="#8a6820"/><ellipse cx="70" cy="95" rx="4" ry="4" fill="white"/><ellipse cx="90" cy="95" rx="4" ry="4" fill="white"/><circle cx="70" cy="95" r="2.5" fill="#2a2820"/><circle cx="90" cy="95" r="2.5" fill="#2a2820"/><ellipse cx="80" cy="107" rx="3" ry="2.5" fill="#e0a878"/><path d="M70 120 Q80 127 90 120" stroke="#9a6838" stroke-width="1.5" fill="none"/><rect x="4" y="132" width="24" height="62" rx="10" fill="#f0f4f8"/><rect x="132" y="132" width="24" height="62" rx="10" fill="#f0f4f8"/></svg>`,
-coordinator:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="130" width="108" height="110" rx="6" fill="#0d6e6e"/><rect x="46" y="130" width="68" height="110" rx="4" fill="#0a5a5a"/><path d="M62 128 Q80 145 98 128" stroke="#4cc9f0" stroke-width="2.5" fill="none"/><ellipse cx="80" cy="100" rx="30" ry="34" fill="#e8b090"/><ellipse cx="80" cy="72" rx="30" ry="18" fill="#1a0808"/><ellipse cx="52" cy="90" rx="10" ry="17" fill="#1a0808"/><ellipse cx="108" cy="90" rx="10" ry="17" fill="#1a0808"/><ellipse cx="70" cy="98" rx="5" ry="4" fill="white"/><ellipse cx="90" cy="98" rx="5" ry="4" fill="white"/><ellipse cx="70" cy="98" rx="3" ry="3" fill="#1a0808"/><ellipse cx="90" cy="98" rx="3" ry="3" fill="#1a0808"/><ellipse cx="80" cy="110" rx="3" ry="3" fill="#d09070"/><path d="M70 122 Q80 130 90 122" stroke="#a07050" stroke-width="1.5" fill="none"/><rect x="3" y="134" width="25" height="62" rx="10" fill="#0d6e6e"/><rect x="132" y="134" width="25" height="62" rx="10" fill="#0d6e6e"/></svg>`,
-labtech:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="128" width="108" height="112" rx="6" fill="#f0f4f8"/><rect x="46" y="128" width="68" height="112" rx="4" fill="#e8eef4"/><rect x="3" y="128" width="25" height="62" rx="10" fill="#c3e0f0"/><rect x="132" y="128" width="25" height="62" rx="10" fill="#c3e0f0"/><rect x="8" y="160" width="6" height="24" rx="3" fill="#4cc9f0" opacity="0.8"/><ellipse cx="80" cy="97" rx="30" ry="34" fill="#d4b896"/><ellipse cx="80" cy="69" rx="30" ry="18" fill="#c0a070"/><rect x="60" y="90" width="16" height="10" rx="3" fill="none" stroke="#7ab8d8" stroke-width="1.8"/><rect x="84" y="90" width="16" height="10" rx="3" fill="none" stroke="#7ab8d8" stroke-width="1.8"/><line x1="76" y1="95" x2="84" y2="95" stroke="#7ab8d8" stroke-width="1.8"/><circle cx="68" cy="95" r="2.5" fill="#3a3030"/><circle cx="92" cy="95" r="2.5" fill="#3a3030"/><ellipse cx="80" cy="108" rx="3" ry="2.5" fill="#c09070"/><path d="M71 121 Q80 127 89 121" stroke="#9a7050" stroke-width="1.5" fill="none"/></svg>`,
-pi2:`<svg viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="130" width="108" height="110" rx="6" fill="#3a1a2a"/><rect x="46" y="130" width="68" height="110" rx="4" fill="#2e1622"/><rect x="62" y="128" width="36" height="6" rx="2" fill="#ffa07a" opacity="0.8"/><ellipse cx="80" cy="98" rx="30" ry="34" fill="#f0c898"/><ellipse cx="80" cy="70" rx="30" ry="18" fill="#1a1a1a"/><ellipse cx="52" cy="86" rx="10" ry="16" fill="#1a1a1a"/><ellipse cx="108" cy="86" rx="10" ry="16" fill="#1a1a1a"/><ellipse cx="70" cy="96" rx="4" ry="4" fill="white"/><ellipse cx="90" cy="96" rx="4" ry="4" fill="white"/><circle cx="70" cy="96" r="2.5" fill="#1a1a1a"/><circle cx="90" cy="96" r="2.5" fill="#1a1a1a"/><ellipse cx="80" cy="107" rx="3" ry="2.5" fill="#d09060"/><path d="M70 119 Q80 125 90 119" stroke="#8a6030" stroke-width="1.5" fill="none"/><rect x="2" y="134" width="26" height="62" rx="10" fill="#3a1a2a"/><rect x="132" y="134" width="26" height="62" rx="10" fill="#3a1a2a"/></svg>`,
-narrator:''
-};
-
-const SPKCLS={narrator:'sp-narrator',you:'sp-you',pi:'sp-pi',manager:'sp-manager',lsm:'sp-lsm',pharmacist:'sp-pharmacist',coordinator:'sp-coordinator',labtech:'sp-labtech',pi2:'sp-pi2'};
-
-// ─── SCENE DATA ───────────────────────────────────────────────
-function buildScenes(l){
-return[
-
-// ── 0. BRIEFING + selección de áreas ──────────────────────────
-{id:'briefing',area:{es:'Briefing inicial',en:'Initial Briefing'},bg:'bg-brief',char:'manager',lines:[
-  {sp:'manager',t:{es:'Buenos días. Hoy conducís la Visita de Calificación de Site (SQV) en el Hospital Universitario San Marcos para el estudio EFC18122022, un ensayo Fase III en neurología.',en:'Good morning. Today you conduct the Site Qualification Visit (SQV) at San Marcos University Hospital for study EFC18122022, a Phase III neurology trial.'}},
-  {sp:'manager',t:{es:'Tu misión: evaluar si el site cumple los requisitos del proceso SQV según ICH-GCP E6(R3) y los SOPs del sponsor.',en:'Your mission: assess whether the site meets SQV process requirements per ICH-GCP E6(R3) and sponsor SOPs.'}},
-  {sp:'manager',t:{es:'Las áreas críticas son: elegibilidad del IP, documentación (CDA), criterios y procedimientos del protocolo, instalaciones, laboratorio y equipamiento, sistemas electrónicos (eMR / eISF), conflicto de interés, y deadlines del proceso SQV.',en:'Critical areas are: PI eligibility, documentation (CDA), protocol criteria and procedures, facilities, lab and equipment, electronic systems (eMR / eISF), conflict of interest, and SQV process deadlines.'}},
-  {sp:'you',t:{es:'Entendido. Me pongo a preparar la visita.',en:"Understood. I'll start preparing for the visit."}}
-],decision:{
-  prompt:{es:'¿Cuál de las siguientes NO es un área crítica del proceso SQV?',en:'Which of the following is NOT a critical area of the SQV process?'},
-  options:[
-    {t:{es:'Elegibilidad y calificación del Investigador Principal',en:'Principal Investigator eligibility and qualification'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La elegibilidad del IP es una de las áreas más críticas de la SQV: CV, licencia, historial de inspecciones y quality flag deben verificarse antes de proceder.',en:'Incorrect. PI eligibility is one of the most critical SQV areas: CV, license, inspection history and quality flag must all be verified before proceeding.'}},
-    {t:{es:'Pileta del hospital y comodidades para el equipo visitante',en:'Hospital pool and amenities for the visiting team'},pts:10,ok:true,icon:'🏊',
-     exp:{es:'Correcto. Las instalaciones recreativas no forman parte del proceso SQV. Las áreas críticas son: elegibilidad del IP, documentación, criterios/procedimientos, instalaciones clínicas, laboratorio, sistemas electrónicos (eMR/eISF), COI y deadlines del proceso.',en:'Correct. Recreational facilities are not part of the SQV process. Critical areas include: PI eligibility, documentation, criteria/procedures, clinical facilities, laboratory, electronic systems (eMR/eISF), COI and process deadlines.'}},
-    {t:{es:'Sistemas electrónicos y datos fuente (eMR / eISF)',en:'Electronic systems and source data (eMR / eISF)'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La evaluación de sistemas electrónicos —eMR y eISF— es obligatoria en la SQV o como máximo en la SIV.',en:'Incorrect. Electronic systems evaluation — eMR and eISF — is mandatory at the SQV or at the latest at the SIV.'}},
-    {t:{es:'Declaración de Conflicto de Interés del IP y sub-investigadores',en:'COI Declaration of the PI and sub-investigators'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La Declaración de COI es un requisito obligatorio del proceso SQV para todos los investigadores.',en:'Incorrect. The COI Declaration is a mandatory SQV requirement for all investigators.'}}
-  ]}},
-
-// ── 1. ELEGIBILIDAD DEL IP — ¿quién la revisa? ───────────────
-{id:'pi_eligibility',area:{es:'Elegibilidad del IP',en:'PI Eligibility'},bg:'bg-brief',char:'manager',lines:[
-  {sp:'narrator',t:{es:'Antes de ir al site, debés verificar la elegibilidad del Dr. García como Investigador Principal del estudio EFC18122022.',en:"Before going to the site, you must verify Dr. García's eligibility as Principal Investigator for study EFC18122022."}},
-  {sp:'manager',t:{es:'Según el SOP, ¿quién es el responsable de revisar si el IP es elegible para conducir el estudio?',en:'According to the SOP, who is responsible for reviewing whether the PI is eligible to conduct the study?'}}
-],decision:{
-  prompt:{es:'¿Quién revisa la elegibilidad del IP?',en:'Who reviews PI eligibility?'},
-  options:[
-    {t:{es:'Solo el CRA — es parte de la preparación de la SQV.',en:'CRA only — it is part of SQV preparation.'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. La elegibilidad del IP no es responsabilidad exclusiva del CRA. Según el SOP, tanto el CRA como el LSM/COSCL tienen responsabilidad compartida en este proceso de verificación.',en:"Incorrect. PI eligibility is not solely the CRA's responsibility. Per the SOP, both the CRA and LSM/COSCL share responsibility in this verification process."}},
-    {t:{es:'Solo el LSM/COSCL — el CRA no interviene en esta validación.',en:'LSM/COSCL only — the CRA does not intervene in this validation.'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. El CRA también tiene responsabilidad activa en la verificación de elegibilidad. Ambos roles participan del proceso según el SOP.',en:'Incorrect. The CRA also has an active role in eligibility verification. Both roles participate in the process per the SOP.'}},
-    {t:{es:'Ambos — el CRA y el LSM/COSCL comparten la responsabilidad.',en:'Both — the CRA and LSM/COSCL share the responsibility.'},pts:10,ok:true,icon:'✅',
-     exp:{es:'Correcto. Según el SOP, la verificación de elegibilidad del IP es responsabilidad compartida entre el CRA y el LSM/COSCL. Las verificaciones incluyen: (1) lista de debarment de FDA, (2) antecedentes de inspecciones regulatorias (ANMAT), y (3) ausencia de quality flag en sistemas internos del sponsor (RPI).',en:'Correct. Per the SOP, PI eligibility verification is a shared responsibility between the CRA and LSM/COSCL. Verifications include: (1) FDA debarment list, (2) regulatory inspection history (ANMAT), and (3) no quality flag in sponsor internal systems (RPI).'}},
-    {t:{es:'Ninguno — es responsabilidad exclusiva del Comité de Ética.',en:'Neither — it is the exclusive responsibility of the Ethics Committee.'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La elegibilidad del IP la verifican el CRA y el LSM/COSCL antes de la SQV. El Comité de Ética tiene un rol diferente en la aprobación ética del protocolo.',en:'Incorrect. PI eligibility is verified by the CRA and LSM/COSCL before the SQV. The Ethics Committee has a different role in ethical protocol approval.'}}
-  ]}},
-
-// ── 2. VISITA AL IP — consulta y ¿procedemos? ────────────────
-{id:'pi_visit',area:{es:'Visita al IP',en:'PI Visit'},bg:'bg-office',char:'pi',lines:[
-  {sp:'narrator',t:{es:'Llegás al consultorio del Dr. García. Previamente verificaste el debarment list de FDA y los antecedentes de inspecciones regulatorias en ANMAT — todo sin hallazgos críticos. El quality flag en RPI también está limpio.',en:"You arrive at Dr. García's office. You previously verified the FDA debarment list and ANMAT regulatory inspection history — all clear. The quality flag in RPI is also clean."}},
-  {sp:'pi',t:{es:'¡Bienvenido! Llevamos 4 años en neurología clínica. Participamos en 2 estudios Fase II con el mismo sponsor hace 3 años.',en:"Welcome! We've been in clinical neurology for 4 years. We participated in 2 Phase II studies with the same sponsor 3 years ago."}},
-  {sp:'you',t:{es:'¿Han tenido alguna inspección o auditoría regulatoria recientemente? ¿Cuál fue el resultado?',en:'Have you had any recent regulatory inspections or audits? What was the outcome?'}},
-  {sp:'pi',t:{es:'Sí, tuvimos una inspección de ANMAT hace 2 años. El resultado fue satisfactorio, sin observaciones críticas.',en:'Yes, we had an ANMAT inspection 2 years ago. The outcome was satisfactory, with no critical findings.'}},
-  {sp:'narrator',t:{es:'También revisaron los criterios de inclusión/exclusión del protocolo y los procedimientos del estudio con el Dr. García, quien demostró conocimiento adecuado de ambos.',en:'You also reviewed the inclusion/exclusion criteria and study procedures with Dr. García, who demonstrated adequate knowledge of both.'}}
-],decision:{
-  prompt:{es:'Con las tres verificaciones completas y la visita realizada, ¿podés proceder con la selección del IP?',en:'With all three verifications complete and the visit conducted, can you proceed with PI selection?'},
-  options:[
-    {t:{es:'Sí — debarment FDA limpio y la inspección ANMAT fue satisfactoria. Es suficiente.',en:'Yes — FDA debarment clear and ANMAT inspection was satisfactory. That\'s enough.'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. Con solo 2 de las 3 verificaciones no alcanza. El SOP requiere también verificar el quality flag en los sistemas internos del sponsor (RPI). Sin las tres verificaciones completas, no se puede proceder.',en:'Incorrect. Only 2 of 3 verifications are not enough. The SOP also requires verifying the quality flag in sponsor internal systems (RPI). Without all three complete, you cannot proceed.'}},
-    {t:{es:'Sí — completé las 3 verificaciones requeridas: debarment FDA, antecedentes ANMAT, y quality flag RPI. Todo sin hallazgos.',en:'Yes — I completed all 3 required verifications: FDA debarment, ANMAT history, and RPI quality flag. All clear.'},pts:10,ok:true,icon:'🔍',
-     exp:{es:'Correcto. El proceso SQV requiere las 3 verificaciones: (1) lista de debarment de FDA, (2) antecedentes de inspecciones en ANMAT (ANMAT no tiene una lista de debarment, pero sí registro de inspecciones), y (3) ausencia de quality flag en sistemas del sponsor como RPI. Con las 3 verificaciones limpias, se puede proceder.',en:'Correct. The SQV process requires all 3 verifications: (1) FDA debarment list, (2) ANMAT inspection records (ANMAT does not have a debarment list, but does have inspection records), and (3) no quality flag in sponsor systems like RPI. With all 3 clear, you can proceed.'}}
-  ]}},
-
-// ── 3. CDA — ¿debe firmar el sub-investigador? ───────────────
-{id:'cda',area:{es:'CDA — Sub-investigador',en:'CDA — Sub-investigator'},bg:'bg-docs',char:'coordinator',lines:[
-  {sp:'narrator',t:{es:'Antes de salir hacia el site, la coordinadora María te llama.',en:'Before leaving for the site, coordinator María calls you.'}},
-  {sp:'coordinator',t:{es:'Hola. La CDA del estudio está firmada por el Dr. García. El Dr. Fernández, sub-investigador que se incorpora al equipo, me pide que le mande el protocolo completo ahora.',en:"Hi. The study CDA is signed by Dr. García. Dr. Fernández, a sub-investigator joining the team, is asking me to send him the full protocol now."}},
-  {sp:'you',t:{es:'Antes de liberar cualquier documento, necesito confirmar algo.',en:'Before releasing any document, I need to confirm something.'}}
-],decision:{
-  prompt:{es:'¿Es necesario que el sub-investigador firme su propia CDA antes de recibir el protocolo?',en:'Is it necessary for the sub-investigator to sign their own CDA before receiving the protocol?'},
-  options:[
-    {t:{es:'No — la CDA firmada por el IP cubre a todo el equipo del site.',en:"No — the CDA signed by the PI covers the entire site team."},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La CDA firmada por el IP no extiende su cobertura automáticamente a todos los miembros del equipo. Cada persona que acceda a documentación confidencial del estudio debe firmar su propia CDA antes de recibirla.',en:'Incorrect. The CDA signed by the PI does not automatically extend coverage to all team members. Each person who accesses confidential study documentation must sign their own CDA before receiving it.'}},
-    {t:{es:'Sí — cada persona que acceda a documentación confidencial firma su propia CDA. Sin eso, no se libera el protocolo.',en:'Yes — each person who accesses confidential documentation signs their own CDA. Without that, the protocol is not released.'},pts:10,ok:true,icon:'📋',
-     exp:{es:'Correcto. La CDA es individual: cada miembro del equipo que acceda a documentación confidencial debe firmarla. Además, el CRA debe verificar la CDA firmada en el SharePoint local y/o CELOCODA antes de liberar cualquier documento del estudio.',en:'Correct. The CDA is individual: each team member who accesses confidential documentation must sign it. Additionally, the CRA must verify the signed CDA in local SharePoint and/or CELOCODA before releasing any study document.'}}
-  ]}},
-
-// ── 4. INVESTIGADOR NAÏVE ─────────────────────────────────────
-{id:'naive_inv',area:{es:'Investigador Naïve',en:'Naïve Investigator'},bg:'bg-office',char:'pi2',lines:[
-  {sp:'narrator',t:{es:'El Dr. Romero es el IP propuesto en el segundo site del estudio. Es un neurólogo muy reconocido, pero nunca condujo un ensayo clínico como investigador principal.',en:'Dr. Romero is the proposed PI at the study\'s second site. He is a highly respected neurologist, but has never conducted a clinical trial as principal investigator.'}},
-  {sp:'pi2',t:{es:'Tengo 15 años de experiencia clínica en neurología. Conozco la patología a la perfección. No veo la necesidad de una visita presencial — podemos hacer todo por videoconferencia.',en:"I have 15 years of clinical neurology experience. I know this pathology perfectly. I don't see the need for an on-site visit — we can do everything by videoconference."}},
-  {sp:'narrator',t:{es:'El equipo de estudio propone hacer la SQV de forma remota para optimizar los tiempos.',en:'The study team proposes conducting the SQV remotely to optimize timelines.'}}
-],decision:{
-  prompt:{es:'¿Cómo procedés con la modalidad de la SQV para el Dr. Romero?',en:'How do you proceed with the SQV modality for Dr. Romero?'},
-  options:[
-    {t:{es:'Aceptás la SQV remota — es un especialista de trayectoria reconocida.',en:"You agree to a remote SQV — he's a recognized specialist with a strong track record."},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. Los investigadores naïve DEBEN tener una visita de calificación presencial sin excepción. La experiencia clínica no reemplaza la experiencia en conducción de ensayos clínicos. Esta es una regla explícita del SOP.',en:"Incorrect. Naïve investigators MUST have an on-site qualification visit without exception. Clinical expertise does not replace clinical trial conduct experience. This is an explicit SOP rule."}},
-    {t:{es:'Explicás que al ser investigador naïve, el SOP requiere obligatoriamente una SQV presencial.',en:'You explain that as a naïve investigator, the SOP mandatorily requires an on-site SQV.'},pts:10,ok:true,icon:'🏥',
-     exp:{es:'Correcto. El SOP establece explícitamente que los investigadores naïve deben tener SQV presencial. La definición de naïve debe figurar en el Monitoring Plan. Si no hay MP disponible aún, confirmás la definición con el study team antes de proceder.',en:"Correct. The SOP explicitly states naïve investigators must have an on-site SQV. The naïve investigator definition should appear in the Monitoring Plan. If no MP is available yet, confirm the definition with the study team before proceeding."}}
-  ]}},
-
-// ── 5. LABORATORIO / EQUIPAMIENTO ────────────────────────────
-{id:'equipment',area:{es:'Laboratorio / Equipamiento',en:'Laboratory / Equipment'},bg:'bg-lab',char:'labtech',lines:[
-  {sp:'narrator',t:{es:'Durante la visita revisás las instalaciones clínicas, confirmás que el site tiene capacidad para reclutar pacientes que cumplan los criterios de inclusión/exclusión, y accedés al área de laboratorio.',en:'During the visit you review the clinical facilities, confirm the site has capacity to recruit patients meeting inclusion/exclusion criteria, and access the laboratory area.'}},
-  {sp:'labtech',t:{es:'Aquí está todo el equipamiento: la centrífuga, la heladera de muestras y el analizador de laboratorio.',en:"Here's all the equipment: the centrifuge, the sample refrigerator, and the lab analyzer."}},
-  {sp:'narrator',t:{es:'Al solicitar los certificados de calibración, el técnico informa que la centrífuga y el analizador tienen la calibración vencida hace dos meses. La renovación "está en trámite".',en:"When you request calibration certificates, the technician informs you that the centrifuge and analyzer have had expired calibration for two months. The renewal 'is in progress'."}}
-],decision:{
-  prompt:{es:'¿Cómo manejás este hallazgo?',en:'How do you handle this finding?'},
-  options:[
-    {t:{es:'Lo anotás como observación menor — el site lo resolverá antes del inicio.',en:"You note it as a minor observation — the site will resolve it before study start."},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. El equipamiento no calibrado no es una observación menor. Debe documentarse en el SQVR y abrirse como issue en IMPACT CTMS. Todos los issues deben resolverse ANTES de la SIV, ya que impactan directamente la calidad de los datos.',en:"Incorrect. Non-calibrated equipment is not a minor observation. It must be documented in the SQVR and opened as an issue in IMPACT CTMS. ALL issues must be resolved BEFORE the SIV, as they directly impact data quality."}},
-    {t:{es:'Documentás en el SQVR y abrís un issue en IMPACT CTMS por cada equipo sin calibración vigente, exigiendo resolución antes de la SIV.',en:'You document in the SQVR and open an issue in IMPACT CTMS for each piece of equipment lacking valid calibration, requiring resolution before SIV.'},pts:10,ok:true,icon:'⚗️',
-     exp:{es:'Correcto. ICH-GCP E6(R3) requiere equipamiento calibrado para el uso previsto. Cada item no calibrado genera un issue en CTMS y una entrada en el SQVR. Sin resolución previa, el site no puede iniciar el estudio.',en:"Correct. ICH-GCP E6(R3) requires equipment calibrated for its intended use. Each non-calibrated item generates an issue in CTMS and an entry in the SQVR. Without prior resolution, the site cannot start the study."}}
-  ]}},
-
-// ── 6. eMR / eISF ─────────────────────────────────────────────
-{id:'emr',area:{es:'eMR / eISF / Datos fuente',en:'eMR / eISF / Source Data'},bg:'bg-emr',char:'coordinator',lines:[
-  {sp:'narrator',t:{es:'Evaluás los sistemas electrónicos del site: el sistema de historia clínica electrónica (eMR) y el sistema de carpeta del investigador electrónica (eISF).',en:'You evaluate the site\'s electronic systems: the electronic medical record (eMR) and the electronic investigator site file (eISF).'}},
-  {sp:'coordinator',t:{es:'Nuestro eMR está validado y el eISF también está implementado y operativo.',en:"Our eMR is validated and the eISF is also implemented and operational."}},
-  {sp:'narrator',t:{es:'Sin embargo, el CRA no tendrá acceso directo al eMR durante las visitas de monitoreo, y la revisión over-the-shoulder tampoco está permitida por políticas institucionales.',en:'However, the CRA will not have direct access to the eMR during monitoring visits, and over-the-shoulder review is also not permitted due to institutional policies.'}}
-],decision:{
-  prompt:{es:'¿Cuál es tu curso de acción respecto al eMR?',en:'What is your course of action regarding the eMR?'},
-  options:[
-    {t:{es:'Documentás el eMR como aceptable — sistema validado es suficiente.',en:"You document the eMR as acceptable — validated system is sufficient."},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La validación del sistema no resuelve el problema de acceso del CRA para la verificación de datos fuente. Sin acceso directo ni revisión over-the-shoulder, la SDV queda comprometida. El assessment de eMR y eISF debe completarse en la SQV o como máximo en la SIV.',en:"Incorrect. System validation doesn't solve the CRA's access problem for source data verification. Without direct access or over-the-shoulder review, SDV is compromised. The eMR and eISF assessment must be completed at SQV or at the latest at SIV."}},
-    {t:{es:'Evaluás si el site puede generar copias certificadas con verificación cruzada aleatoria. Si no es posible, recomendás reconsiderar la selección.',en:'You evaluate whether the site can generate certified copies with random cross-verification. If not possible, you recommend reconsidering site selection.'},pts:10,ok:true,icon:'💻',
-     exp:{es:'Correcto. Si el CRA no tiene acceso al eMR, el site debe poder generar copias certificadas revisables durante la visita, con verificación cruzada aleatoria. Si esa alternativa tampoco es viable, se recomienda reconsiderar la selección del site.',en:"Correct. If the CRA doesn't have eMR access, the site must be able to generate certified copies reviewable during the visit, with random cross-verification. If that alternative is also not viable, site selection should be reconsidered."}}
-  ]}},
-
-// ── 7. COI — ¿dónde se archiva el original? ──────────────────
-{id:'coi_archive',area:{es:'Conflicto de Interés — Archivo',en:'Conflict of Interest — Filing'},bg:'bg-coi',char:'pi',lines:[
-  {sp:'narrator',t:{es:'Al final de la visita, el Dr. García completa la Declaración de Conflicto de Interés. Al revisarla, notás que declaró recibir honorarios de una empresa farmacéutica competidora.',en:'At the end of the visit, Dr. García completes the Conflict of Interest Declaration. Reviewing it, you notice he declared receiving honoraria from a competing pharmaceutical company.'}},
-  {sp:'pi',t:{es:'Fue solo una presentación académica que di hace 6 meses. No creo que sea relevante para este estudio.',en:"It was just an academic presentation I gave 6 months ago. I don't think it's relevant to this study."}}
-],decision:{
-  prompt:{es:'¿Dónde debe archivarse el ORIGINAL de la Declaración de COI?',en:'Where should the ORIGINAL COI Declaration be filed?'},
-  options:[
-    {t:{es:'En el ISF (Carpeta del Investigador, en el site)',en:'In the ISF (Investigator Site File, at the site)'},pts:10,ok:true,icon:'📁',
-     exp:{es:'Correcto. El original queda en el ISF del site. Una copia se archiva en el eTMF del sponsor. Además, por tratarse de un COI positivo, el CRA debe escalarlo inmediatamente al LSM/COSCL, quien contactará al CSU Head, E&BI Country Head y Local Medical Affairs Head. La evaluación final no está en manos del CRA.',en:'Correct. The original stays in the site ISF. A copy is filed in the sponsor eTMF. Additionally, as this is a positive COI, the CRA must immediately escalate to the LSM/COSCL, who will contact the CSU Head, E&BI Country Head and Local Medical Affairs Head. The final evaluation is not the CRA\'s decision.'}},
-    {t:{es:'En el eTMF (carpeta electrónica del sponsor)',en:'In the eTMF (sponsor electronic folder)'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. El eTMF recibe una COPIA del COI, no el original. El original siempre queda en el ISF del site.',en:'Incorrect. The eTMF receives a COPY of the COI, not the original. The original always stays in the site ISF.'}},
-    {t:{es:'En ambos — original tanto en ISF como en eTMF',en:'In both — original in both ISF and eTMF'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. Solo existe un original, y corresponde al ISF del site. El eTMF recibe una copia certificada, no un original duplicado.',en:'Incorrect. There is only one original, and it belongs in the site ISF. The eTMF receives a certified copy, not a duplicate original.'}},
-    {t:{es:'En ninguno hasta que se resuelva el COI positivo',en:'In neither until the positive COI is resolved'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. La Declaración se archiva SIEMPRE, sea positiva o negativa. El COI positivo no suspende el archivo — lo que se dispara es el proceso de escalado paralelo al LSM/COSCL.',en:'Incorrect. The Declaration is ALWAYS filed, whether positive or negative. A positive COI does not suspend filing — what it triggers is a parallel escalation process to the LSM/COSCL.'}}
-  ]}},
-
-// ── 8. CORRESPONDENCIA POST-VISITA ───────────────────────────
-{id:'post_visit',area:{es:'Correspondencia post-visita',en:'Post-visit Correspondence'},bg:'bg-report',char:'manager',lines:[
-  {sp:'narrator',t:{es:'La visita finalizó. Además del reporte, debés determinar qué correspondencia formal se envía al site luego de la SQV.',en:'The visit is complete. In addition to the report, you need to determine what formal correspondence is sent to the site after the SQV.'}},
-  {sp:'manager',t:{es:'¿Qué le enviamos al site una vez concluida la visita de calificación?',en:'What do we send to the site once the qualification visit is concluded?'}}
-],decision:{
-  prompt:{es:'¿Qué correspondencia se envía al site después de la SQV?',en:'What correspondence is sent to the site after the SQV?'},
-  options:[
-    {t:{es:'Solo una carta indicando si el site fue seleccionado o no para el estudio.',en:'Only a letter indicating whether the site was selected or not for the study.'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. La carta es necesaria, pero no es lo único. También se envía el Reporte de la Visita de Calificación (SQVR). Ambos son requeridos por el proceso.',en:"Incorrect. The letter is necessary, but it's not the only thing. The Site Qualification Visit Report (SQVR) must also be sent. Both are required by the process."}},
-    {t:{es:'Solo el Reporte de la Visita de Calificación (SQVR).',en:'Only the Site Qualification Visit Report (SQVR).'},pts:0,ok:false,icon:'⚠️',
-     exp:{es:'Incorrecto. El SQVR es necesario, pero también debe enviarse una carta formal al site con el resultado de la calificación. Ambos documentos son obligatorios.',en:'Incorrect. The SQVR is necessary, but a formal letter with the qualification result must also be sent to the site. Both documents are mandatory.'}},
-    {t:{es:'Ambos — la carta con el resultado de la calificación y el Reporte de la Visita (SQVR).',en:'Both — the qualification result letter and the Site Qualification Visit Report (SQVR).'},pts:10,ok:true,icon:'📬',
-     exp:{es:'Correcto. Luego de la SQV se envían al site dos documentos: (1) el SQVR (Reporte de Visita de Calificación) y (2) una carta formal indicando si el site fue seleccionado, no seleccionado, o seleccionado de forma condicional. Ambos son obligatorios según el proceso.',en:'Correct. After the SQV, two documents are sent to the site: (1) the SQVR (Site Qualification Visit Report) and (2) a formal letter indicating whether the site was selected, not selected, or conditionally selected. Both are mandatory per the process.'}},
-    {t:{es:'No se manda nada — el site se entera del resultado en la SIV.',en:'Nothing is sent — the site learns the result at the SIV.'},pts:0,ok:false,icon:'❌',
-     exp:{es:'Incorrecto. El site debe recibir formalmente tanto el resultado de la calificación como el reporte correspondiente. No comunicar el resultado es una desviación grave del proceso SQV.',en:'Incorrect. The site must formally receive both the qualification result and the corresponding report. Failing to communicate the result is a serious SQV process deviation.'}}
-  ]}},
-
-// ── 9. DEADLINE DEL SQVR ─────────────────────────────────────
-{id:'report',area:{es:'Deadline del SQVR',en:'SQVR Deadline'},bg:'bg-report',char:'manager',lines:[
-  {sp:'narrator',t:{es:'La visita de calificación finalizó hoy. Debés presentar el Reporte de Visita de Calificación dentro del plazo establecido por el SOP.',en:'The qualification visit concluded today. You must submit the Site Qualification Visit Report within the deadline established by the SOP.'}},
-  {sp:'manager',t:{es:'Buen trabajo hoy. Recordá que el deadline del reporte es crítico. ¿Cuánto tiempo tenemos?',en:"Good work today. Keep in mind the report deadline is critical. How much time do we have?"}}
-],decision:{
-  prompt:{es:'¿Cuál es el plazo máximo para que el SQVR esté escrito, revisado y aprobado?',en:'What is the maximum deadline for the SQVR to be written, reviewed and approved?'},
-  options:[
-    {t:{es:'30 días calendario desde el inicio de las actividades de calificación.',en:'30 calendar days from the start of qualification activities.'},pts:0,ok:false,icon:'📅',
-     exp:{es:'Incorrecto. Los 30 días corresponden a la duración máxima de las ACTIVIDADES de calificación (de la primera a la última actividad). El plazo del reporte es distinto: 15 días calendario desde el cierre de la visita.',en:"Incorrect. The 30 calendar days corresponds to the maximum duration of qualification ACTIVITIES (first to last). The report deadline is different: 15 calendar days from the visit end."}},
-    {t:{es:'15 días calendario desde el último día de la visita de calificación.',en:'15 calendar days from the last day of the qualification visit.'},pts:10,ok:true,icon:'📝',
-     exp:{es:'Correcto. El SQVR debe estar escrito, revisado y aprobado dentro de los 15 días calendario posteriores al fin de la visita. Las actividades de calificación no deben superar los 30 días en total. Son dos plazos distintos e independientes del proceso SQV.',en:"Correct. The SQVR must be written, reviewed and approved within 15 calendar days after the visit end date. Qualification activities must not exceed 30 days total. These are two distinct and independent SQV process deadlines."}}
-  ]}}
-
-];}
-
-// ─── FONDOS ───────────────────────────────────────────────────
-const DECOS={
-'bg-brief':(c,w,h)=>{const x=c.getContext('2d');x.strokeStyle='rgba(76,201,240,0.05)';x.lineWidth=1;for(let i=0;i<w;i+=40){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke();}for(let j=0;j<h;j+=40){x.beginPath();x.moveTo(0,j);x.lineTo(w,j);x.stroke();}},
-'bg-office':(c,w,h)=>{const x=c.getContext('2d');x.fillStyle='rgba(255,180,80,0.06)';x.fillRect(w*.55,0,w*.45,h*.55);},
-'bg-docs':(c,w,h)=>{const x=c.getContext('2d');for(let i=0;i<7;i++){x.fillStyle=`rgba(76,201,240,${0.03+i*0.008})`;x.fillRect(w*.65,i*38,w*.35,30);}},
-'bg-lab':(c,w,h)=>{const x=c.getContext('2d');x.fillStyle='rgba(6,214,160,0.05)';x.beginPath();x.arc(w*.22,h*.55,80,0,Math.PI*2);x.fill();},
-'bg-emr':(c,w,h)=>{const x=c.getContext('2d');x.strokeStyle='rgba(76,100,240,0.07)';x.lineWidth=1;for(let j=0;j<h;j+=28){x.beginPath();x.moveTo(0,j);x.lineTo(w,j);x.stroke();}},
-'bg-coi':(c,w,h)=>{const x=c.getContext('2d');x.fillStyle='rgba(239,71,111,0.04)';x.beginPath();x.arc(w*.78,h*.35,90,0,Math.PI*2);x.fill();},
-'bg-report':(c,w,h)=>{const x=c.getContext('2d');x.strokeStyle='rgba(76,201,240,0.04)';x.lineWidth=1;for(let i=0;i<w;i+=36){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke();}}
-};
-
-// ─── ESTADO ───────────────────────────────────────────────────
-let G_lang='es', G_score=0, G_si=0, G_li=0, G_phase='dl', G_decisions=[], G_scenes=[], G_playerName='';
-
-// ─── TYPEWRITER ───────────────────────────────────────────────
-let _twInterval=null, _twDone=true, _twFullText='';
-
-function typewrite(el,text){
-  if(_twInterval){clearInterval(_twInterval);_twInterval=null;}
-  _twFullText=text; _twDone=false;
-  el.classList.add('typing-cursor'); el.textContent='';
-  let i=0;
-  _twInterval=setInterval(()=>{
-    el.textContent+=text[i++];
-    if(i>=text.length){clearInterval(_twInterval);_twInterval=null;_twDone=true;el.classList.remove('typing-cursor');}
-  },16);
+// ─── STORAGE (leaderboard) ─────────────────────────────────────
+const STORE_KEY='sqv_lb_v3';
+function lbLoad(){try{return JSON.parse(localStorage.getItem(STORE_KEY))||[];}catch{return[];}}
+function lbSave(d){localStorage.setItem(STORE_KEY,JSON.stringify(d));}
+function lbAdd(name,score,breakdown){
+  const d=lbLoad();
+  d.push({name,score,breakdown,date:new Date().toLocaleDateString('es-AR')});
+  d.sort((a,b)=>b.score-a.score);
+  lbSave(d.slice(0,20));
 }
-
-function skipTypewrite(){
-  if(!_twDone){
-    if(_twInterval){clearInterval(_twInterval);_twInterval=null;}
-    document.getElementById('g-dtxt').textContent=_twFullText;
-    document.getElementById('g-dtxt').classList.remove('typing-cursor');
-    _twDone=true; return true;
-  }
-  return false;
-}
+function gradeOf(s){return s>=100?'S':s>=80?'A':s>=60?'B':'C';}
 
 // ─── LOGIN ────────────────────────────────────────────────────
 const L={
-  _tab:'player',_lang:'es',
-  tab(t){
-    this._tab=t;
-    document.querySelectorAll('.ltab').forEach((b,i)=>b.classList.toggle('active',(i===0&&t==='player')||(i===1&&t==='admin')));
-    document.getElementById('l-player-section').classList.toggle('hidden',t!=='player');
-    document.getElementById('l-admin-section').classList.toggle('hidden',t!=='admin');
+  mode:'player',
+  tab(m){
+    this.mode=m;
+    document.getElementById('lt-player').classList.toggle('active',m==='player');
+    document.getElementById('lt-admin').classList.toggle('active',m==='admin');
+    document.getElementById('lp-player').classList.toggle('hidden',m!=='player');
+    document.getElementById('lp-admin').classList.toggle('hidden',m!=='admin');
+    document.getElementById('l-err').textContent='';
   },
-  lang(l){
-    this._lang=l;
-    ['lb-es','lb-en'].forEach(id=>document.getElementById(id).classList.remove('sel'));
-    document.getElementById('lb-'+l).classList.add('sel');
-    const es=l==='es';
-    document.getElementById('l-name-label').textContent=es?'Tu nombre':'Your name';
-    document.getElementById('l-lang-label').textContent=es?'Idioma':'Language';
-    document.getElementById('l-note').textContent=es?'Ingresá tu nombre para guardar tu puntaje':'Enter your name to save your score';
-    document.getElementById('l-start-btn').textContent=es?'▶ COMENZAR MISIÓN':'▶ BEGIN MISSION';
+  submit(){
+    if(this.mode==='player') this.startPlayer();
+    else this.loginAdmin();
   },
   startPlayer(){
     const n=document.getElementById('l-name').value.trim();
-    if(!n){document.getElementById('l-name').focus();return;}
-    G_playerName=n; G_lang=this._lang;
-    show('s-game'); G.init();
+    if(!n){document.getElementById('l-err').textContent='Ingresá tu nombre';return;}
+    G.playerName=n;
+    show('s-game');
+    G.init();
   },
   loginAdmin(){
-    const u=document.getElementById('l-adm-user').value.trim();
     const p=document.getElementById('l-adm-pass').value;
-    if(u==='admin'&&p==='3782'){document.getElementById('l-err').textContent='';A.open();}
-    else{document.getElementById('l-err').textContent='Usuario o contraseña incorrectos';}
-  }
-};
-
-// ─── ADMIN ────────────────────────────────────────────────────
-const A={
-  open(){show('s-admin');this.refresh();},
-  logout(){show('s-login');},
-  refresh(){
-    const lb=lbLoad();
-    const body=document.getElementById('lb-body');
-    if(!lb.length){body.innerHTML='<tr><td colspan="5" class="lb-empty">Aún no hay puntajes registrados.</td></tr>';return;}
-    body.innerHTML=lb.map((e,i)=>{
-      const sc=e.score;
-      const T=I[e.lang]||I.es;
-      const vShort=sc>=80?T.verdictShortOk:sc>=50?T.verdictShortCond:T.verdictShortNo;
-      const cls=sc>=80?'sc-ok':sc>=50?'sc-cond':'sc-no';
-      const rkCls=i===0?'r1':i===1?'r2':i===2?'r3':'';
-      const barColor=sc>=80?'#06d6a0':sc>=50?'#ffd166':'#ef476f';
-      return`<tr>
-        <td class="lb-rank ${rkCls}">${i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1)}</td>
-        <td style="font-weight:500">${e.name}</td>
-        <td><span class="lb-score ${cls}">${sc}<span style="font-size:11px;color:var(--muted);font-weight:400"> / 100</span></span>
-          <div class="lb-bar"><div class="lb-bar-fill" style="width:${sc}%;background:${barColor}"></div></div></td>
-        <td class="lb-verdict ${cls}">${vShort}</td>
-        <td style="font-size:12px;color:var(--muted)">${e.date||''}</td>
-      </tr>`;
-    }).join('');
+    if(p!=='syneos2024'){document.getElementById('l-err').textContent='Contraseña incorrecta';return;}
+    this.renderLb();
+    show('s-admin');
   },
-  clear(){
-    if(confirm('¿Borrar todos los puntajes del leaderboard?')){lbSave([]);this.refresh();}
-  }
+  renderLb(){
+    const d=lbLoad();
+    const t=document.getElementById('lb-table');
+    if(!d.length){t.innerHTML=`<tr><td colspan="4" class="lb-empty">Sin registros aún</td></tr>`;return;}
+    t.innerHTML=`<thead><tr><th>#</th><th>Nombre</th><th>Score</th><th>Grade</th></tr></thead><tbody>`+
+      d.map((e,i)=>{const g=gradeOf(e.score);return`<tr>
+        <td class="lb-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</td>
+        <td>${e.name}</td><td class="lb-score">${e.score}/110</td>
+        <td><span class="lb-grade grade-${g}">${g}</span></td>
+      </tr>`;}).join('')+'</tbody>';
+  },
+  clearScores(){if(confirm('¿Limpiar todos los scores?')){lbSave([]);this.renderLb();}},
+  goLb(){this.renderLb();show('s-admin');}
 };
 
-// ─── GAME ─────────────────────────────────────────────────────
-const G={
+// ─── SCENES ───────────────────────────────────────────────────
+// 11 scenes: 10 × 10pts = 100pts + 1 bonus = 110 max
+const SCENES = [
+
+  // ── 0: BRIEFING ──────────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Son las 8:50 AM. Estás en el lobby del Hospital Universitario San Martín, revisando tu tablet antes de la visita de calificación del estudio EFC18122022. Tu PM te envió un mensaje esta mañana.'},
+      {sp:'PM — SANOFI',av:'💼',ac:'av-pm',
+       tx:'Buenos días. Antes de entrar al site, recordá que el objetivo de la SQV es evaluar si el centro tiene la capacidad operativa, científica y logística para conducir el estudio. No es una visita de auditoría — es una conversación. Suerte.'},
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Repasás mentalmente las 7 áreas críticas a evaluar durante una SQV. ¿Cuál de las siguientes NO es un área de evaluación estándar?'},
+    ],
+    question:'¿Cuál de estas NO es un área crítica de evaluación en una SQV?',
+    choices:[
+      {tx:'Capacidad del equipo y experiencia del PI',correct:false},
+      {tx:'Infraestructura y espacio para almacenamiento de IP',correct:false},
+      {tx:'Pileta olímpica y sala de descanso del personal',correct:true},
+      {tx:'Sistema de manejo de datos (EDC) y conectividad',correct:false},
+    ],
+    explanation:'Las 7 áreas estándar de una SQV incluyen: experiencia del PI y equipo, infraestructura, almacenamiento de IP, laboratorio, manejo de datos, reclutamiento potencial y procesos regulatorios. Las instalaciones recreativas del personal no forman parte de ninguna evaluación GCP.',
+    pts:10,
+  },
+
+  // ── 1: ELEGIBILIDAD DEL PI ───────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Llegás a la oficina del Dr. García, Investigador Principal. Antes de reunirte con él, revisás su CV y credenciales enviados en el Site Qualification Package.'},
+      {sp:'CRA — VOS',av:'🩺',ac:'av-cra',
+       tx:'Tengo que verificar la elegibilidad del PI. ¿A quién le corresponde esta evaluación?'},
+    ],
+    question:'¿Quién es responsable de evaluar la elegibilidad del PI en una SQV?',
+    choices:[
+      {tx:'Solo el CRA asignado al estudio',correct:false},
+      {tx:'Solo el Line Manager de Syneos',correct:false},
+      {tx:'Tanto el CRA como el Line/Study Manager en conjunto',correct:true},
+      {tx:'Únicamente el sponsor (Sanofi)',correct:false},
+    ],
+    explanation:'La elegibilidad del PI es una evaluación conjunta. El CRA aporta la evaluación de campo (capacidad operativa, entrevista, infraestructura), mientras que el Study/Line Manager valida y aprueba desde el nivel de gestión. Ambos firman o endosan el reporte de SQV.',
+    pts:10,
+  },
+
+  // ── 2: PI NAÏVE ──────────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'CRA — VOS',av:'🩺',ac:'av-cra',
+       tx:'Dr. García, ¿ha participado anteriormente en estudios clínicos con Sanofi?'},
+      {sp:'DR. GARCÍA — PI',av:'👨‍⚕️',ac:'av-pi',
+       tx:'He participado en varios estudios con otras compañías, pero con Sanofi sería la primera vez.'},
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'El Dr. García tiene experiencia en investigación clínica general, pero nunca trabajó con Sanofi como sponsor. En el contexto de esta visita, ¿cómo clasificás su perfil?'},
+    ],
+    question:'¿Cómo se define un PI "Naïve" en el contexto de Sanofi?',
+    choices:[
+      {tx:'PI que nunca participó en ningún estudio clínico',correct:false},
+      {tx:'PI que hace investigación clínica por primera vez, O que trabaja con Sanofi como sponsor por primera vez',correct:true},
+      {tx:'PI que no tiene publicaciones científicas',correct:false},
+      {tx:'PI que no conoce el protocolo del estudio',correct:false},
+    ],
+    explanation:'Un PI Naïve, en el contexto de Sanofi, abarca dos situaciones: (1) PI sin experiencia previa en investigación clínica en general, o (2) PI con experiencia en otros estudios pero que trabaja con Sanofi como sponsor por primera vez. El Dr. García cae en esta segunda categoría. Esto implica necesidades adicionales de training y acompañamiento durante el estudio.',
+    pts:10,
+  },
+
+  // ── 3: CDA ───────────────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Antes de compartir el protocolo completo con el equipo del site, verificás el status del Confidential Disclosure Agreement (CDA).'},
+      {sp:'CRA — VOS',av:'🩺',ac:'av-cra',
+       tx:'Confirmé que el CDA está firmado por el Dr. García. El Dr. Pérez, subinvestigador, me solicita una copia del protocolo para revisar los criterios de inclusión.'},
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'El CDA fue firmado únicamente por el IP. ¿Podés compartir el protocolo con el subinvestigador?'},
+    ],
+    question:'¿El subinvestigador necesita firmar un CDA separado para recibir el protocolo?',
+    choices:[
+      {tx:'Sí, cada miembro del equipo debe firmar su propio CDA',correct:false},
+      {tx:'No, el CDA firmado por el IP cubre a todo el personal del site',correct:true},
+      {tx:'Solo los médicos necesitan CDA, no el personal de enfermería',correct:false},
+      {tx:'Depende del país; en Argentina cada uno firma por separado',correct:false},
+    ],
+    explanation:'El CDA es firmado por el Investigador Principal y cubre a todo el personal del site bajo su responsabilidad. No es necesario que cada miembro del equipo firme un CDA individual. El IP asume la responsabilidad por la confidencialidad de toda su delegación. Podés compartir el protocolo con el Dr. Pérez.',
+    pts:10,
+  },
+
+  // ── 4: ALMACENAMIENTO DE IP ──────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Llegó el momento de evaluar el área de almacenamiento de la medicación del estudio. La IP de EFC18122022 es un biológico (anticuerpo monoclonal) provisto por Sanofi.'},
+      {sp:'COORDINADORA — SITE',av:'👩‍⚕️',ac:'av-coord',
+       tx:'Esta es nuestra heladera de medicación del estudio. Tiene cerradura, y el acceso es solo para el personal autorizado. La temperatura actual es de 5°C.'},
+      {sp:'CRA — VOS',av:'🩺',ac:'av-cra',
+       tx:'¿Cómo registran la temperatura diariamente? ¿Y qué hacen ante un corte de luz?'},
+    ],
+    question:'¿Cuál de los siguientes hallazgos representaría un hallazgo CRÍTICO en la evaluación de almacenamiento de IP?',
+    choices:[
+      {tx:'La heladera está a 5°C y tiene registro de temperatura diario en papel',correct:false},
+      {tx:'La heladera está a -20°C (freezer) y no hay plan de contingencia ante corte de luz',correct:true},
+      {tx:'El Fridge Tag de Sanofi está instalado pero no fue calibrado este mes',correct:false},
+      {tx:'El acceso es solo para PI y coordinadora, sin llave de repuesto',correct:false},
+    ],
+    explanation:'Los biológicos como anticuerpos monoclonales NO pueden congelarse. Sanofi requiere almacenamiento entre 2 y 8°C. Encontrar la IP en un freezer a -20°C sería un hallazgo crítico que podría comprometer la estabilidad del producto. Además, el site debe tener un plan claro ante cortes de energía (ej: heladera de emergencia, tiempo de estabilidad fuera de temperatura). Sanofi provee un Fridge Tag para monitoreo continuo de temperatura.',
+    pts:10,
+  },
+
+  // ── 5: CHECKLIST DE ALMACENAMIENTO ──────────────────────────
+  {
+    type:'checklist',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Completás la evaluación del área de almacenamiento. Marcá todos los ítems que debés verificar obligatoriamente durante la SQV para el almacenamiento de IP:'},
+    ],
+    items:[
+      {tx:'Temperatura entre 2–8°C (nunca congelado)',required:true},
+      {tx:'Acceso restringido con llave o código',required:true},
+      {tx:'Registro de temperatura diario (manual o automático)',required:true},
+      {tx:'Fridge Tag de Sanofi instalado y funcionando',required:true},
+      {tx:'Plan de contingencia ante corte de suministro eléctrico',required:true},
+      {tx:'Heladera exclusiva para IP del estudio (sin alimentos ni otras muestras)',required:false},
+    ],
+    correctRequired:[0,1,2,3,4],
+    explanation:'Los 5 ítems marcados como correctos son verificaciones obligatorias en toda SQV para almacenamiento de biológicos en Sanofi. La heladera exclusiva es una buena práctica pero no siempre es un requisito excluyente — puede compartirse con otras IPs si hay separación física y etiquetado adecuado.',
+    pts:10,
+  },
+
+  // ── 6: LABORATORIO ───────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Pasás al laboratorio central del hospital para evaluar su capacidad de procesamiento de muestras.'},
+      {sp:'TÉCNICO LAB',av:'🔬',ac:'av-lab',
+       tx:'Procesamos muestras de hematología, bioquímica y orina. Las centrífugas tienen calibración anual y los rangos de referencia están actualizados. Trabajamos con el courier internacional que nos indica el sponsor.'},
+      {sp:'CRA — VOS',av:'🩺',ac:'av-cra',
+       tx:'¿Tienen certificación vigente del laboratorio central?'},
+      {sp:'TÉCNICO LAB',av:'🔬',ac:'av-lab',
+       tx:'La certificación venció hace dos semanas. Estamos en proceso de renovación, debería llegar en 10 días.'},
+    ],
+    question:'La certificación del laboratorio venció hace dos semanas. ¿Cómo manejás este hallazgo?',
+    choices:[
+      {tx:'Lo ignorás, porque el técnico dijo que se renueva en 10 días',correct:false},
+      {tx:'Lo documentás como hallazgo y coordinás con el site para resolver antes del SIV',correct:true},
+      {tx:'Descalificás el site inmediatamente',correct:false},
+      {tx:'Le pedís al laboratorio que emita un certificado provisorio',correct:false},
+    ],
+    explanation:'Una certificación vencida es un hallazgo que debe documentarse en el reporte de SQV, pero no es necesariamente una descalificación inmediata si puede resolverse antes del inicio del estudio. La acción correcta es documentarlo, comunicarlo al equipo de proyecto y establecer un follow-up con el site para confirmar la renovación antes de la Visita de Inicio.',
+    pts:10,
+  },
+
+  // ── 7: ISF / eTMF ─────────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Evaluás los sistemas de archivo de documentos esenciales. El site utiliza una carpeta electrónica (eTMF) conectada al sistema de Sanofi, y el ISF está en formato híbrido (papel + digital).'},
+      {sp:'COORDINADORA — SITE',av:'👩‍⚕️',ac:'av-coord',
+       tx:'El COI del Dr. García ya está firmado y lo archivamos en el ISF local. ¿Dónde debería estar el original?'},
+    ],
+    question:'¿Dónde se archiva el original del COI (Conflict of Interest) firmado por el PI?',
+    choices:[
+      {tx:'ISF — Carpeta del Investigador en el site',correct:false},
+      {tx:'eTMF — Sistema del Sponsor (Sanofi)',correct:false},
+      {tx:'En ambos sistemas (ISF y eTMF)',correct:true},
+      {tx:'En ninguno — se envía directamente a Ética',correct:false},
+    ],
+    explanation:'El COI firmado debe estar archivado en ambos sistemas: el ISF del site (carpeta del investigador) y el eTMF del sponsor. Además, si el COI revela un conflicto real, debe escalarse al LSM y al equipo de E&BI (Ethics & Business Integrity) de Sanofi para evaluación. El solo hecho de tener el documento archivado no es suficiente si hay un conflicto que requiere acción.',
+    pts:10,
+  },
+
+  // ── 8: PI NAÏVE — PLAN DE ACCIÓN ─────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Dado que el Dr. García es Naïve para Sanofi, debés definir el nivel de acompañamiento adicional durante el estudio.'},
+      {sp:'DR. GARCÍA — PI',av:'👨‍⚕️',ac:'av-pi',
+       tx:'Tengo 8 años de experiencia en ensayos clínicos con otras CROs. ¿Qué implica ser "naïve" para Sanofi en la práctica?'},
+    ],
+    question:'¿Qué acción adicional corresponde tomar con un PI Naïve para Sanofi?',
+    choices:[
+      {tx:'Ninguna, su experiencia previa es suficiente',correct:false},
+      {tx:'Visitas de monitoreo más frecuentes y training específico en SOPs y sistemas de Sanofi',correct:true},
+      {tx:'Reemplazarlo por un PI con experiencia en Sanofi',correct:false},
+      {tx:'Solo informarle que será auditado más seguido',correct:false},
+    ],
+    explanation:'Un PI Naïve para Sanofi requiere training específico en los sistemas, SOPs y cultura de trabajo del sponsor — independientemente de su experiencia previa. Esto incluye formación en el EDC de Sanofi, procedimientos de farmacovigilancia del sponsor, y frecuencia de monitoreo incrementada al menos durante los primeros ciclos del estudio, hasta que el PI demuestre autonomía en el manejo de los requerimientos de Sanofi.',
+    pts:10,
+  },
+
+  // ── 9: REPORTE DE SQV ─────────────────────────────────────────
+  {
+    type:'dialog',
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'Terminaste la visita. Ahora debés preparar el reporte de SQV y decidir a quién se lo enviás.'},
+      {sp:'COORDINADORA — SITE',av:'👩‍⚕️',ac:'av-coord',
+       tx:'Doctora, ¿nos van a enviar una copia del reporte de la visita de hoy para que podamos revisar los hallazgos?'},
+    ],
+    question:'¿Se comparte el reporte de SQV con el site?',
+    choices:[
+      {tx:'Sí, siempre se envía al PI dentro de los 5 días hábiles',correct:false},
+      {tx:'No, el reporte de SQV es interno. Solo el reporte del SIV se comparte con el site',correct:true},
+      {tx:'Solo si el site lo solicita formalmente',correct:false},
+      {tx:'Se comparte un resumen ejecutivo, no el reporte completo',correct:false},
+    ],
+    explanation:'El reporte de SQV (Qualification Visit Report) es un documento interno de uso exclusivo del equipo del sponsor y la CRO. No se comparte con el site investigador. Lo que sí se comparte con el site es el reporte de la Visita de Inicio (SIV — Site Initiation Visit), que confirma que el site está listo para comenzar el reclutamiento y resume los acuerdos y requerimientos para la conducción del estudio.',
+    pts:10,
+  },
+
+  // ── 10: BONUS — CRITERIOS I/E ─────────────────────────────────
+  {
+    type:'dialog',
+    bonus:true,
+    lines:[
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'¡BONUS! Antes de cerrar la visita, el Dr. García te hace una consulta sobre el protocolo.'},
+      {sp:'DR. GARCÍA — PI',av:'👨‍⚕️',ac:'av-pi',
+       tx:'Tengo una paciente de 68 años con diagnóstico confirmado pero con creatinina levemente elevada — 1.3 mg/dL. ¿Podría participar en el estudio?'},
+      {sp:'NARRADOR',av:'🎙',ac:'av-narrator',
+       tx:'El criterio de exclusión del protocolo indica: "Creatinina sérica > 1.5 mg/dL". ¿Cuál es tu respuesta?'},
+    ],
+    question:'La paciente tiene creatinina de 1.3 mg/dL. El criterio de exclusión es > 1.5 mg/dL. ¿Qué le respondés al PI?',
+    choices:[
+      {tx:'No puede participar — la creatinina elevada es siempre criterio de exclusión',correct:false},
+      {tx:'Puede participar — 1.3 está por debajo del límite de exclusión de 1.5',correct:true},
+      {tx:'Necesitás consultar con el médico monitor antes de responder',correct:false},
+      {tx:'Depende de otros parámetros renales que no se mencionan',correct:false},
+    ],
+    explanation:'1.3 mg/dL está por debajo del umbral de exclusión de 1.5 mg/dL. La paciente cumple este criterio de elegibilidad. Como CRA, debés conocer el protocolo lo suficiente para responder preguntas claras de criterios I/E sin necesidad de escalar cada consulta. Esto también demuestra al PI tu dominio científico del estudio, clave para construir la relación de trabajo.',
+    pts:10,
+  },
+
+];
+
+// ─── GAME ENGINE ──────────────────────────────────────────────
+let G_phase = '';
+const G = {
+  playerName:'',
+  sceneIdx:0,
+  lineIdx:0,
+  score:0,
+  breakdown:[],
+
   init(){
-    G_score=0; G_si=0; G_li=0; G_phase='dl'; G_decisions=[];
-    G_scenes=buildScenes(G_lang);
-    document.getElementById('g-lang-btn').textContent=G_lang==='es'?'EN':'ES';
+    this.sceneIdx=0; this.lineIdx=0; this.score=0; this.breakdown=[];
+    document.getElementById('g-hud').style.display='flex';
     document.getElementById('g-final').style.display='none';
-    document.getElementById('g-dialog').style.display='block';
-    document.getElementById('g-choices').style.display='none';
-    document.getElementById('g-conseq').style.display='none';
-    this.renderScene();
+    document.getElementById('g-scene').style.display='flex';
+    this.loadScene();
   },
 
-  toggleLang(){
-    G_lang=G_lang==='es'?'en':'es';
-    G_scenes=buildScenes(G_lang);
-    document.getElementById('g-lang-btn').textContent=G_lang==='es'?'EN':'ES';
-    this.updateHUD(); this.renderLine();
+  loadScene(){
+    const sc=SCENES[this.sceneIdx];
+    this.lineIdx=0;
+    document.getElementById('g-choices').innerHTML='';
+    document.getElementById('g-checklist').style.display='none';
+    document.getElementById('g-feedback').style.display='none';
+    document.getElementById('g-checklist').innerHTML='';
+    this.updateHUD();
+    this.showLine();
   },
 
   updateHUD(){
-    document.getElementById('g-hud-score').textContent=`SCORE: ${G_score} / 100`;
-    document.getElementById('g-hud-area').textContent=(G_scenes[G_si]?.area?.[G_lang]||'').toUpperCase();
-    // Dots for all scenes that have a decision
-    const decScenes=G_scenes.map((s,i)=>({s,i})).filter(x=>x.s.decision);
-    document.getElementById('g-dots').innerHTML=decScenes.map(({s,i})=>
-      `<div class="g-dot ${i<G_si?'done':i===G_si?'active':''}"></div>`
-    ).join('');
+    const pct=Math.round((this.sceneIdx/SCENES.length)*100);
+    document.getElementById('h-scene').textContent=`Escena ${this.sceneIdx+1} / ${SCENES.length}`;
+    document.getElementById('h-prog').style.width=pct+'%';
+    document.getElementById('h-score').textContent=this.score;
   },
 
-  drawDeco(){
-    const cv=document.getElementById('g-deco');
-    const p=document.getElementById('g-bg');
-    cv.width=p.offsetWidth; cv.height=p.offsetHeight;
-    const fn=DECOS[G_scenes[G_si]?.bg];
-    if(fn)fn(cv,cv.width,cv.height);
-  },
+  showLine(){
+    const sc=SCENES[this.sceneIdx];
+    const line=sc.lines[this.lineIdx];
+    const dlg=document.getElementById('g-dialog');
+    document.getElementById('d-avatar').textContent=line.av;
+    document.getElementById('d-avatar').className='dlg-avatar '+line.ac;
+    document.getElementById('d-speaker').textContent=line.sp;
+    document.getElementById('d-text').textContent=line.tx;
+    const isLast=this.lineIdx===sc.lines.length-1;
+    document.getElementById('d-hint').textContent=isLast?'':'Haz clic para continuar ▶';
+    dlg.classList.add('fade-in');
+    setTimeout(()=>dlg.classList.remove('fade-in'),300);
 
-  renderScene(){
-    const s=G_scenes[G_si];
-    document.getElementById('g-bg').className='g-bg '+(s.bg||'bg-brief');
-    setTimeout(()=>this.drawDeco(),50);
-    document.getElementById('g-char').innerHTML=CHARS[s.char]||'';
-    G_phase='dl'; G_li=0;
-    document.getElementById('g-dialog').style.display='block';
-    document.getElementById('g-choices').style.display='none';
-    document.getElementById('g-conseq').style.display='none';
-    this.updateHUD(); this.renderLine();
-  },
-
-  renderLine(){
-    const s=G_scenes[G_si];
-    const line=s.lines[G_li];
-    const spkMapEs={narrator:'— Narrador —',you:'Vos',pi:'Dr. García (IP)',pi2:'Dr. Romero (IP)',manager:'CRA Manager',lsm:'LSM/COSCL',pharmacist:'Carlos (Farmacéutico)',coordinator:'María (Coordinadora)',labtech:'Técnico Lab'};
-    const spkMapEn={narrator:'— Narrator —',you:'You',pi:'Dr. García (PI)',pi2:'Dr. Romero (PI)',manager:'CRA Manager',lsm:'LSM/COSCL',pharmacist:'Carlos (Pharmacist)',coordinator:'María (Coordinator)',labtech:'Lab Tech'};
-    const map=G_lang==='es'?spkMapEs:spkMapEn;
-    document.getElementById('g-spk').textContent=map[line.sp]||line.sp;
-    document.getElementById('g-spk').className='g-speaker '+(SPKCLS[line.sp]||'');
-    const ck=line.sp==='narrator'?G_scenes[G_si].char:line.sp;
-    document.getElementById('g-char').innerHTML=CHARS[ck]||'';
-    document.getElementById('g-char').style.opacity=line.sp==='narrator'?'0.35':'1';
-    document.getElementById('g-cont').textContent=I[G_lang].continue;
-    typewrite(document.getElementById('g-dtxt'),line.t[G_lang]||line.t.en);
-  },
-
-  advance(){
-    if(G_phase!=='dl')return;
-    if(skipTypewrite())return;
-    const s=G_scenes[G_si];
-    if(G_li<s.lines.length-1){
-      G_li++; this.renderLine();
+    if(isLast){
+      G_phase='ch';
+      if(sc.type==='checklist'){
+        this.renderChecklist(sc);
+      } else {
+        this.renderChoices(sc);
+      }
     } else {
-      if(s.decision)this.showChoices();
-      else{G_si++;if(G_si>=G_scenes.length)this.showFinal();else this.renderScene();}
+      G_phase='dl';
     }
   },
 
-  showChoices(){
-    G_phase='ch';
-    document.getElementById('g-dialog').style.display='none';
-    document.getElementById('g-choices').style.display='flex';
-    const s=G_scenes[G_si];
-    document.getElementById('g-cpr').textContent=s.decision.prompt[G_lang]||s.decision.prompt.en;
-    const btns=document.getElementById('g-cbtns');
-    btns.innerHTML='';
-    s.decision.options.forEach((o,i)=>{
-      const b=document.createElement('button');
-      b.className='g-cbtn';
-      b.textContent=`${i+1}. ${o.t[G_lang]||o.t.en}`;
-      b.onclick=()=>this.choose(i);
-      btns.appendChild(b);
+  advance(){
+    if(G_phase!=='dl') return;
+    const sc=SCENES[this.sceneIdx];
+    if(this.lineIdx<sc.lines.length-1){
+      this.lineIdx++;
+      this.showLine();
+    }
+  },
+
+  renderChoices(sc){
+    const wrap=document.getElementById('g-choices');
+    wrap.innerHTML='';
+    sc.choices.forEach((c,i)=>{
+      const btn=document.createElement('button');
+      btn.className='choice-btn fade-in';
+      btn.style.animationDelay=(i*0.07)+'s';
+      btn.textContent=`${['A','B','C','D'][i]}. ${c.tx}`;
+      btn.onclick=()=>this.choose(i);
+      wrap.appendChild(btn);
     });
   },
 
-  choose(idx){
-    const s=G_scenes[G_si];
-    const o=s.decision.options[idx];
-    G_score+=o.pts;
-    G_decisions.push({area:s.area,icon:o.icon,choice:o.t,exp:o.exp,pts:o.pts,ok:o.ok,max:Math.max(...s.decision.options.map(x=>x.pts))});
-    document.getElementById('g-hud-score').textContent=`SCORE: ${G_score} / 100`;
-    G_phase='cons';
-    document.getElementById('g-choices').style.display='none';
-    document.getElementById('g-conseq').style.display='flex';
-    const ct=document.getElementById('g-ctxt');
-    ct.className='g-ctext '+(o.ok?'cok':o.pts>0?'cpart':'cbad');
-    ct.textContent=`${o.icon}  ${o.exp[G_lang]||o.exp.en}`;
-    const isLast=G_si>=G_scenes.length-1;
-    document.getElementById('g-nxtbtn').textContent=isLast?I[G_lang].seeResults:I[G_lang].nextArea;
+  choose(i){
+    if(G_phase!=='ch') return;
+    G_phase='fb';
+    const sc=SCENES[this.sceneIdx];
+    const correct=sc.choices[i].correct;
+    const pts=correct?sc.pts:0;
+    this.score+=pts;
+    this.breakdown.push({label:sc.question,pts,max:sc.pts,ok:correct});
+    document.getElementById('h-score').textContent=this.score;
+
+    const btns=document.querySelectorAll('.choice-btn');
+    btns.forEach((b,j)=>{
+      b.disabled=true;
+      if(sc.choices[j].correct) b.classList.add('correct');
+      else if(j===i && !correct) b.classList.add('wrong');
+    });
+
+    const fb=document.getElementById('g-feedback');
+    fb.style.display='block';
+    fb.className=`fade-in ${correct?'fb-correct':'fb-wrong'}`;
+    fb.innerHTML=`
+      <div class="fb-result">${correct?'✅ CORRECTO':'❌ INCORRECTO'}</div>
+      <div class="fb-explanation">${sc.explanation}</div>
+      ${pts>0?`<div class="fb-pts">+${pts} pts</div>`:''}
+      <button class="btn-next" onclick="G.next()">Siguiente →</button>
+    `;
   },
 
-  nextScene(){
-    G_si++;
-    if(G_si>=G_scenes.length){
+  renderChecklist(sc){
+    const wrap=document.getElementById('g-checklist');
+    wrap.style.display='flex';
+    wrap.innerHTML='';
+    sc.items.forEach((item,i)=>{
+      const div=document.createElement('div');
+      div.className='chk-item fade-in';
+      div.style.animationDelay=(i*0.07)+'s';
+      div.innerHTML=`<div class="chk-box" id="chkbox-${i}"></div><span>${item.tx}</span>`;
+      div.onclick=()=>{
+        div.classList.toggle('checked');
+        document.getElementById(`chkbox-${i}`).textContent=div.classList.contains('checked')?'✓':'';
+      };
+      wrap.appendChild(div);
+    });
+    const sub=document.createElement('button');
+    sub.className='chk-submit fade-in';
+    sub.textContent='Confirmar selección';
+    sub.onclick=()=>this.submitChecklist(sc);
+    wrap.appendChild(sub);
+    document.getElementById('g-dialog').style.cursor='default';
+  },
+
+  submitChecklist(sc){
+    if(G_phase!=='ch') return;
+    G_phase='fb';
+    const selected=[];
+    sc.items.forEach((_,i)=>{
+      if(document.querySelector(`.chk-item:nth-child(${i+1})`).classList.contains('checked'))
+        selected.push(i);
+    });
+    const correct=sc.correctRequired.every(r=>selected.includes(r)) &&
+      selected.every(s=>sc.correctRequired.includes(s));
+    const pts=correct?sc.pts:selected.filter(s=>sc.correctRequired.includes(s)).length>=4?Math.round(sc.pts/2):0;
+    this.score+=pts;
+    this.breakdown.push({label:'Checklist de almacenamiento de IP',pts,max:sc.pts,ok:correct});
+    document.getElementById('h-score').textContent=this.score;
+
+    const fb=document.getElementById('g-feedback');
+    fb.style.display='block';
+    fb.className=`fade-in ${correct?'fb-correct':'fb-wrong'}`;
+    fb.innerHTML=`
+      <div class="fb-result">${correct?'✅ COMPLETO':'⚠️ INCOMPLETO'}</div>
+      <div class="fb-explanation">${sc.explanation}</div>
+      ${pts>0?`<div class="fb-pts">+${pts} pts</div>`:''}
+      <button class="btn-next" onclick="G.next()">Siguiente →</button>
+    `;
+  },
+
+  next(){
+    this.sceneIdx++;
+    if(this.sceneIdx>=SCENES.length){
       this.showFinal();
     } else {
-      document.getElementById('g-conseq').style.display='none';
-      document.getElementById('g-dialog').style.display='block';
-      this.renderScene();
+      this.loadScene();
     }
   },
 
   showFinal(){
-    document.getElementById('g-dialog').style.display='none';
-    document.getElementById('g-conseq').style.display='none';
-    document.getElementById('g-hud').style.display='none';
-    const f=document.getElementById('g-final');
-    f.style.display='block';
-    const T=I[G_lang];
-    const pct=Math.min(100,Math.round((G_score/100)*100));
-    let verdict,vcls,note;
-    if(G_score>=80){verdict=T.verdictOk;vcls='vok';note=T.noteOk;}
-    else if(G_score>=50){verdict=T.verdictCond;vcls='vcond';note=T.noteCond;}
-    else{verdict=T.verdictNo;vcls='vno';note=T.noteNo;}
-    const barColor=G_score>=80?'#06d6a0':G_score>=50?'#ffd166':'#ef476f';
-    lbAdd(G_playerName,G_score,G_lang);
-    f.innerHTML=`
-    <div style="text-align:center;margin-bottom:20px">
-      <div style="font-size:10px;letter-spacing:3px;color:var(--muted);margin-bottom:12px;text-transform:uppercase">Reporte de Calificación — EFC18122022</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:6px">CRA: <strong style="color:var(--text)">${G_playerName}</strong></div>
-      <div class="f-verdict ${vcls}">${verdict}</div>
-      <div class="f-score">${T.totalScore}: <strong style="color:${barColor}">${G_score}</strong> / 100</div>
-      <div class="f-bar"><div class="f-bar-fill" id="f-fb" style="width:0%;background:${barColor}"></div></div>
-      <div class="f-note">${note}</div>
-    </div>
-    <div class="f-dtitle">${T.decisionSummary}</div>
-    ${G_decisions.map(d=>`
-    <div class="f-ditem">
-      <div class="f-dicon">${d.icon}</div>
-      <div>
-        <div class="f-darea">${d.area[G_lang]||d.area.en}</div>
-        <div class="f-dchoice">"${d.choice[G_lang]||d.choice.en}"</div>
-        <div class="f-dexp">${d.exp[G_lang]||d.exp.en}</div>
-        <div class="f-dpts ${d.ok?'pts-ok':d.pts>0?'pts-p':'pts-no'}">${d.ok?'✓':d.pts>0?'~':'✗'} ${d.pts} / ${d.max} pts</div>
+    G_phase='done';
+    document.getElementById('g-scene').style.display='none';
+    lbAdd(this.playerName,this.score,this.breakdown);
+
+    const maxPts=SCENES.reduce((a,s)=>a+s.pts,0);
+    const pct=Math.round((this.score/maxPts)*100);
+    const grade=gradeOf(pct);
+    const msg={S:'¡Perfecto! Estás listo para auditar sites.',A:'Excelente visita. Muy sólido.',B:'Buen trabajo, hay algunos puntos a reforzar.',C:'Necesitás repasar el material de SQV.'}[grade];
+
+    const fin=document.getElementById('g-final');
+    fin.style.display='block';
+    fin.innerHTML=`
+      <div class="f-grade f-grade-${grade}">${grade}</div>
+      <div class="f-title">${msg}</div>
+      <div class="f-score">${this.score} / ${maxPts}</div>
+      <div class="f-sub">${this.playerName} · ${new Date().toLocaleDateString('es-AR')}</div>
+      <div class="f-bar-wrap"><div class="f-bar" id="f-fb"></div></div>
+      <div class="f-breakdown">
+        ${this.breakdown.map(d=>`
+          <div class="f-row">
+            <span class="f-row-label">${d.label.length>50?d.label.substring(0,47)+'…':d.label}</span>
+            <span class="f-row-result">${d.ok?'✅':'❌'}</span>
+            <span class="f-row-pts">${d.pts}/${d.max}</span>
+          </div>`).join('')}
       </div>
-    </div>`).join('')}
-    <div class="f-actions">
-      <button class="btn-ghost" onclick="G.replay()">${T.playAgain}</button>
-      <button class="btn-ghost" onclick="G.goLb()">${T.goLb}</button>
-    </div>`;
-    setTimeout(()=>{const fb=document.getElementById('f-fb');if(fb)fb.style.width=pct+'%';},150);
+      <div class="f-actions">
+        <button class="btn-ghost" onclick="G.replay()">↩ Jugar de nuevo</button>
+        <button class="btn-ghost" onclick="L.goLb()">🏆 Leaderboard</button>
+      </div>`;
+    setTimeout(()=>{const fb=document.getElementById('f-fb');if(fb)fb.style.width=pct+'%';},200);
   },
 
   replay(){
-    document.getElementById('g-hud').style.display='flex';
+    document.getElementById('g-scene').style.display='flex';
     document.getElementById('g-final').style.display='none';
     this.init();
   },
-
-  goLb(){show('s-login');L.tab('admin');}
 };
 
 // ─── UTILS ────────────────────────────────────────────────────
@@ -728,8 +746,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='3'&&G_phase==='ch')G.choose(2);
   if(e.key==='4'&&G_phase==='ch')G.choose(3);
 });
-document.getElementById('g-cont').onclick=()=>G.advance();
-document.getElementById('g-dialog').onclick=()=>G.advance();
+document.getElementById('g-dialog').onclick=()=>{ if(G_phase==='dl')G.advance(); };
 document.getElementById('l-name').addEventListener('keydown',e=>{if(e.key==='Enter')L.startPlayer();});
 document.getElementById('l-adm-pass').addEventListener('keydown',e=>{if(e.key==='Enter')L.loginAdmin();});
 </script>
